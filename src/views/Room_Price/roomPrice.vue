@@ -45,11 +45,12 @@
               <thead class="thead-light">
                 <tr>
                   <th>No</th>
-                  <th>Nama</th>
-                  <th>Bed Type</th>
-                  <th>Capacity</th>
-                  <th>Size</th>
-                  <th>Availability</th>
+                  <th>Room Type</th>
+                  <th>Name Price</th>
+                  <th>Price Type</th>
+                  <th>Price</th>
+                  <th>Start Date</th>
+                  <th>Promo Code</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -58,7 +59,7 @@
                   v-for="itemRoomPrice in roomprice"
                   v-bind:key="itemRoomPrice.id"
                 >
-                  <td>{{ itemRoomPrice.name }}</td>
+                  <td>{{ itemRoomPrice.id }}</td>
                   <td>
                       {{ itemRoomPrice.name }}
                   </td>
