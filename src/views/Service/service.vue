@@ -19,7 +19,6 @@
                           <a href="" class="btn btn-sm btn-neutral">
                             <router-link to="/service/create">Tambah Data</router-link>
                           </a>
-                        
                       </div>
                   </div>
                   </div>

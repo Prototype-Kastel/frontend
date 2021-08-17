@@ -25,8 +25,9 @@
             </nav>
           </div>
           <div class="col-lg-6 col-5 text-right">
-            <a href="dashboard.html#" class="btn btn-sm btn-neutral">New</a>
-            <a href="dashboard.html#" class="btn btn-sm btn-neutral">Filters</a>
+             <a  class="btn btn-sm btn-neutral">
+                  <router-link to="/roomprice/create">Tambah Data</router-link>
+             </a>
           </div>
         </div>
       </div>
@@ -40,7 +41,7 @@
           <div class="card-header">
             <h3 class="mb-0">Datatable Room Price</h3>
           </div>
-          <div class="table-responsive py-4" v-if="roomprice.length > 0">
+          <div class="table-responsive py-4">
             <table class="table table-flush" id="datatable-basic">
               <thead class="thead-light">
                 <tr>
@@ -56,36 +57,24 @@
               </thead>
               <tbody>
                 <tr
-                  v-for="itemRoomPrice in roomprice"
-                  v-bind:key="itemRoomPrice.id"
+                  v-for="(itemRoomPrice,index) in roomPrices.data"
+                  :key="index"
                 >
-                  <td>{{ itemRoomPrice.id }}</td>
+                  <td>{{ index + 1 }}</td>
                   <td>
+                      {{ itemRoomPrice.room_type.name }}
+                  </td>
+                   <td>
                       {{ itemRoomPrice.name }}
                   </td>
                   <td>{{ itemRoomPrice.price_type }}</td>
                   <td>{{ itemRoomPrice.price }}</td>
-                  <td>{{ itemRoomPrice.created_at }}</td>
+                  <td>{{ itemRoomPrice.start_date }}</td>
                   <td>{{ itemRoomPrice.promo_code }}</td>
                   <td>
-                    <button
-                      type="button"
-                      class="btn btn-info btn-sm"
-                      data-toggle="modal"
-                      data-target="#exampleModal"
-                    >
-                      <i class="fas fa-eye"></i>
-                    </button>
-                    <a href="editCustomer.html" class="btn btn-success btn-sm"
-                      ><i class="fas fa-edit"></i
-                    ></a>
-                    <button
-                      class="btn btn-danger btn-sm"
-                      data-toggle="sweet-alert"
-                      data-sweet-alert="confirm"
-                    >
-                      <i class="fas fa-trash"></i>
-                    </button>
+                   <router-link to="/roomprice"><span class="btn btn-info btn-sm mr-1"><i class="fas fa-eye"></i></span></router-link>
+                   <router-link :to=" {name: 'roomprice.edit', params:{id:itemRoomPrice.id} } "><span class="btn btn-success btn-sm mr-1"><i class="fas fa-edit"></i></span></router-link>
+                   <router-link to="/roomprice"><span class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></span></router-link>
                   </td>
                 </tr>
               </tbody>
@@ -102,22 +91,31 @@
 import v_footer from "@/components/v_footer.vue";
 import navbar from "@/components/Navbar.vue";
 import axios from "axios";
+import {onMounted,ref} from "vue";
+
 export default {
   name: "RoomPrice",
   components: {
     v_footer,
     navbar,
   },
-  data() {
+  setup() {
+    //  state reactuve
+    let roomPrices = ref([]);
+
+    onMounted(() => {
+      axios.get('http://127.0.0.1:8000/api/roomprice')
+      .then((result) => {
+        roomPrices.value = result.data;
+        
+      }).catch((err) => {
+        console.log(err.response);
+      });
+    })
     return {
-      roomprice: [],
-    };
-  },
-  mounted() {
-    axios
-      .get("http://127.0.0.1:8000/api/roomprice")
-      .then((res) => (this.roomtype = res.data.data))
-      .catch((err) => console.log(err));
-  },
+      roomPrices
+    }
+    
+  }
 };
 </script>
