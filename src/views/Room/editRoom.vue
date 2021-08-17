@@ -32,16 +32,7 @@
           <!-- Form groups used in grid -->
           <div class="form-group">
             <label for="">No Room</label>
-            <input type="text" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="">Room Type</label>
-            <select name="" id="" class="form-control">
-                <option value="" disabled selected>choose one</option>
-                <option value="">Small</option>
-                <option value="">Medium</option>
-                <option value="">Large</option>
-            </select>
+            <input type="text" class="form-control" v-model="itemRoom.no_room">
           </div>
           <div class="form-group">
             <label for="">Floor</label>
@@ -64,12 +55,60 @@
 <script>
 import v_footer from '@/components/v_footer.vue';
 import navbar from '@/components/Navbar.vue';
+import {reactive,ref,onMounted} from 'vue';
+import {useRouter,useRoute} from 'vue-router';
+import axios from 'axios';
+
 export default {
   name: "editRoom",
   components:{
     v_footer,
     navbar
+  },
+setup() {
+    //   data binding
+      let rooms = reactive({
+          no_room : '',
+          floor :'',
+          room_status :''
+      });
+
+      const validation = ref([]);
+    //   redirect setelah store
+      const router = useRouter();
+      const route = useRoute();
+
+        onMounted(() => {
+            axios.get(`http://127.0.0.1:8000/api/room/${route.params.id}/show`)
+            .then((result) => {
+                rooms.no_room = result.data.data.room
+                rooms.floor = result.data.data.floor
+                rooms.room_status = result.data.data.room_status
+            }).catch((err) => {
+                console.log(err.response.data);
+            });
+        })
+        function update() { 
+            axios.put(
+                `http://127.0.0.1:8000/api/room/${route.params.id}/update`, rooms
+            )
+            .then(() => {
+                router.push({
+                    name : 'rooms'
+                })
+            }).catch((err) => {
+                validation.value = err.response.data
+            })
+        }
+        return {
+            rooms,
+            validation,
+            router,
+            update
+        }
+
   }
+  
 
 }
 </script>

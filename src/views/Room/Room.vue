@@ -45,7 +45,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="itemRoom in rooms" v-bind:key="itemRoom.id">
+                  <tr v-for="(itemRoom,index) in rooms.data" v-bind:key="index">
                     <td>{{ itemRoom.id }}</td>
                     <td>{{ itemRoom.no_room }}</td>
                     <td>{{ itemRoom.room_type.name }}</td>
@@ -53,9 +53,7 @@
                     <td>{{ itemRoom.room_status }}</td>
                     <td>
                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-eye"></i></button>
-                        <router-link to="/room/editroom">
-                          <button class="btn btn-success btn-sm"> <i class="fas fa-edit"></i> </button>
-                        </router-link> 
+                        <router-link :to=" {name: 'itemRoom.edit', params:{id:itemRoom.id} } "><span class="btn btn-success btn-sm mr-1"><i class="fas fa-edit"></i></span></router-link>
                         <button class="btn btn-danger btn-sm" data-toggle="sweet-alert" data-sweet-alert="confirm"><i class="fas fa-trash"></i></button>
                     </td>
                   </tr>
@@ -74,22 +72,30 @@
 import v_footer from '@/components/v_footer.vue';
 import navbar from '@/components/Navbar.vue';
 import axios from "axios";
+import { onMounted, ref} from 'vue';
 export default {
   name: "Room",
   components: {
     v_footer,
     navbar,
   },
-  data() {
+  setup(){
+    let rooms = ref([]);
+
+    onMounted(() =>  {
+      // get data from api endpoint
+      axios.get('http://127.0.0.1:8000/api/room')
+      .then((result) => {
+        rooms.value = result.data
+      }).catch((err) =>{
+        console.log(err.response)
+      });
+    });
+
     return {
-      rooms: [],
-    };
-  },
-  mounted() {
-    axios
-      .get("http://127.0.0.1:8000/api/roomprice")
-      .then((res) => (this.rooms = res.data.data))
-      .catch((err) => console.log(err));
-  },
+      rooms
+    }
+  }
+
 };
 </script>

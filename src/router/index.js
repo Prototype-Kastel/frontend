@@ -2,7 +2,6 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Room from '../views/Room/Room.vue';
 import addRoom from '../views/Room/addRoom.vue';
-import editRoom from '../views/Room/editRoom.vue';
 import RoomType from '../views/Room_Type/roomType.vue';
 import RoomPrice from '../views/Room_Price/roomPrice.vue';
 import Service from '../views/Service/service.vue';
@@ -24,9 +23,9 @@ const routes = [
     component: addRoom
   },
   {
-    path: '/room/editroom',
-    name: 'editRoom',
-    component: editRoom
+    path: '/room/editroom/:id',
+    name: 'itemRoom.edit',
+    component: () => import("@/views/Room/editRoom.vue")
   },
   {
     path: '/roomType',
