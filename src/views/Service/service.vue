@@ -85,7 +85,7 @@ export default {
 
       onMounted(() => {
         // get data from axios in services
-        axios.get('http://127.0.0.1:8000/api/services')
+        axios.get('api/services')
         .then((result) => {
             services.value = result.data;
         }).catch((err) => {

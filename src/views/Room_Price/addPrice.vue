@@ -154,7 +154,7 @@ export default {
 
     //get data from room type
     onMounted(() => {
-        axios.get('http://127.0.0.1:8000/api/roomtype')
+        axios.get('api/roomtype')
         .then((result) => {
             roomtypes.value = result.data
         }).catch((err) => {
@@ -164,7 +164,7 @@ export default {
 
     function store() { 
         axios.post(
-            'http://127.0.0.1:8000/api/roomprice/store',
+            'api/roomprice/store',
              roomprice
         )
         .then(() => {

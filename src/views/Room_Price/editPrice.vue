@@ -157,14 +157,14 @@ export default {
 
     //get data from room type
     onMounted(() => {
-        axios.get('http://127.0.0.1:8000/api/roomtype')
+        axios.get('api/roomtype')
         .then((result) => {
             roomtypes.value = result.data
         }).catch((err) => {
             console.log(err.response);
         });
 
-        axios.get(`http://127.0.0.1:8000/api/roomprice/${route.params.id}/show`)
+        axios.get(`api/roomprice/${route.params.id}/show`)
         .then((result) => {
             roomprice.name = result.data.data.name
             roomprice.roomType_id = result.data.data.roomType_id
@@ -181,7 +181,7 @@ export default {
 
     function update() { 
         axios.put(
-            `http://127.0.0.1:8000/api/roomprice/${route.params.id}/update`,
+            `api/roomprice/${route.params.id}/update`,
              roomprice
         )
         .then(() => {

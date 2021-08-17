@@ -115,7 +115,7 @@ export default {
 
     function store() { 
         axios.post(
-            'http://127.0.0.1:8000/api/services/store',
+            'api/services/store',
              service
         )
         .then(() => {

@@ -104,7 +104,7 @@ export default {
     let roomPrices = ref([]);
 
     onMounted(() => {
-      axios.get('http://127.0.0.1:8000/api/roomprice')
+      axios.get('api/roomprice')
       .then((result) => {
         roomPrices.value = result.data;
         
