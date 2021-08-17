@@ -89,12 +89,14 @@
 <script>
 import v_footer from '@/components/v_footer.vue';
 import navbar from '@/components/Navbar.vue';
+
 export default {
   name: "Room",
   components:{
     v_footer,
     navbar
   }
+  
 
 }
 </script>
