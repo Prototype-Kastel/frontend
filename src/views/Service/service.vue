@@ -16,8 +16,10 @@
                       </nav>
                       </div>
                       <div class="col-lg-6 col-5 text-right">
-                          <a href="dashboard.html#" class="btn btn-sm btn-neutral">New</a>
-                          <a href="dashboard.html#" class="btn btn-sm btn-neutral">Filters</a>
+                          <a href="" class="btn btn-sm btn-neutral">
+                            <router-link to="/service/create">Tambah Data</router-link>
+                          </a>
+                        
                       </div>
                   </div>
                   </div>
@@ -36,43 +38,26 @@
                 <thead class="thead-light">
                   <tr>
                     <th>No</th>
-                    <th>Nama </th>
-                    <th>Email </th>
-                    <th>Phone</th>
-                    <th>Foto</th>
-                    <th>Action</th>
+                    <th>Name </th>
+                    <th>Category </th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Haluha</td>
-                    <td>zudhapratama@gmail.com</td>
-                    <td>085784260416</td>
+                  <tr v-for="(service,index) in services.data" :key="index">
+                    <td>{{index + 1}}</td>
+                    <td>{{service.name}}</td>
+                    <td>{{service.category}}</td>
+                    <td>{{service.price}}</td>
+                    <td>{{service.stock}}</td>
                     <td>
-                      
+                        <router-link to="/service"><span class="btn btn-info btn-sm mr-1"><i class="fas fa-eye"></i></span></router-link>
+                        <router-link :to=" {name: 'service.edit', params:{id:service.id} } "><span class="btn btn-success btn-sm mr-1"><i class="fas fa-edit"></i></span></router-link>
+                        <router-link to="/service"><span class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></span></router-link>
                     </td>
-                    <td>
-                      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-eye"></i></button>
-                        <a href="editCustomer.html" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
-                        <button class="btn btn-danger btn-sm" data-toggle="sweet-alert" data-sweet-alert="confirm"><i class="fas fa-trash"></i></button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Budi Pratama</td>
-                    <td>budiprtm@gmail.com</td>
-                    <td>085896405623</td>
-                    <td>
-                      
-                    </td>
-                    <td> 
-                      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-eye"></i></button>
-                        <a href="editCustomer.html" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
-                        <button class="btn btn-danger btn-sm" data-toggle="sweet-alert" data-sweet-alert="confirm"><i class="fas fa-trash"></i></button>
-                    </td>
-                  </tr>
-                 
+                  </tr>     
                 </tbody>
               </table>
             </div>
@@ -86,11 +71,33 @@
 <script>
 import v_footer from '@/components/v_footer.vue';
 import navbar from '@/components/Navbar.vue';
+import axios from 'axios';
+import {onMounted,ref} from "vue";
+
 export default {
   name: "service",
   components:{
     v_footer,
     navbar
+  },
+  setup(){
+    // state reactive
+      let services = ref([]);
+
+      onMounted(() => {
+        // get data from axios in services
+        axios.get('http://127.0.0.1:8000/api/services')
+        .then((result) => {
+            services.value = result.data;
+        }).catch((err) => {
+            console.log(err.response);
+        });
+    });
+    return {
+      services
+    }
+    
+    
   }
 
 }

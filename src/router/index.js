@@ -52,8 +52,18 @@ const routes = [
   },
   {
     path: '/service',
-    name: 'Service',
+    name: 'service',
     component: Service
+  },
+  {
+    path: '/service/create',
+    name: 'service.create',
+    component: () => import("@/views/Service/addService.vue")
+  },
+  {
+    path: '/service/edit/:id',
+    name: 'service.edit',
+    component: () => import("@/views/Service/editService.vue")
   },
   // {
   //   path: '/booking',
