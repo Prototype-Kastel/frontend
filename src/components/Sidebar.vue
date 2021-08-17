@@ -75,13 +75,6 @@
                   <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
                         <a class="nav-link">
-                            <router-link to="/room">
-                              <span class="nav-link-text text-default">Room</span>
-                            </router-link>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
                             <router-link to="/roomType">
                               <span class="nav-link-text text-default">Room Type</span>
                             </router-link>
@@ -92,6 +85,13 @@
                         <a class="nav-link">
                             <router-link to="/roomPrice">
                               <span class="nav-link-text text-default">Room Price</span>
+                            </router-link>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <router-link to="/room">
+                              <span class="nav-link-text text-default">Room</span>
                             </router-link>
                         </a>
                     </li>
