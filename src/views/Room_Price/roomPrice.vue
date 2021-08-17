@@ -116,7 +116,7 @@ export default {
   mounted() {
     axios
       .get("http://127.0.0.1:8000/api/roomprice")
-      .then((res) => (this.roomtype = res.data.data))
+      .then((res) => (this.roomprice = res.data.data))
       .catch((err) => console.log(err));
   },
 };

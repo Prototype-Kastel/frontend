@@ -41,7 +41,7 @@
           <div class="card-header">
             <h3 class="mb-0">Datatable Room Type</h3>
           </div>
-          <div class="table-responsive py-4" v-if="roomtype.length > 0">
+          <div class="table-responsive py-4">
             <table class="table table-flush" id="datatable-basic">
               <thead class="thead-light">
                 <tr>
@@ -56,8 +56,8 @@
               </thead>
               <tbody>
                 <tr
-                  v-for="itemRoomType in roomtype"
-                  v-bind:key="itemRoomType.id"
+                  v-for="(itemRoomType, index) in roomType.data"
+                  v-bind:key="index"
                 >
                   <td>{{ itemRoomType.id }}</td>
                   <td>
@@ -79,24 +79,9 @@
                     >
                   </td>
                   <td>
-                    <button
-                      type="button"
-                      class="btn btn-info btn-sm"
-                      data-toggle="modal"
-                      data-target="#exampleModal"
-                    >
-                      <i class="fas fa-eye"></i>
-                    </button>
-                    <a href="editCustomer.html" class="btn btn-success btn-sm"
-                      ><i class="fas fa-edit"></i
-                    ></a>
-                    <button
-                      class="btn btn-danger btn-sm"
-                      data-toggle="sweet-alert"
-                      data-sweet-alert="confirm"
-                    >
-                      <i class="fas fa-trash"></i>
-                    </button>
+                    <router-link to="/service"><span class="btn btn-info btn-sm mr-1"><i class="fas fa-eye"></i></span></router-link>
+                    <router-link :to=" {name: 'itemRoomType.edit', params:{id:itemRoomType.id} } "><span class="btn btn-success btn-sm mr-1"><i class="fas fa-edit"></i></span></router-link>
+                    <router-link to="/service"><span class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></span></router-link>
                   </td>
                 </tr>
               </tbody>
@@ -117,22 +102,30 @@
 import v_footer from "@/components/v_footer.vue";
 import navbar from "@/components/Navbar.vue";
 import axios from "axios";
+import { onMounted, ref} from 'vue'
 export default {
   name: "RoomType",
   components: {
     v_footer,
     navbar,
   },
-  data() {
+  setup(){
+    let roomType = ref([]);
+
+    onMounted(() =>  {
+      // get data from api endpoint
+      axios.get('http://127.0.0.1:8000/api/roomtype')
+      .then((result) => {
+        roomType.value = result.data
+      }).catch((err) =>{
+        console.log(err.response)
+      });
+    });
+
     return {
-      roomtype: [],
-    };
-  },
-  mounted() {
-    axios
-      .get("http://127.0.0.1:8000/api/roomtype")
-      .then((res) => (this.roomtype = res.data.data))
-      .catch((err) => console.log(err));
-  },
+      roomType
+    }
+
+  }
 };
 </script>

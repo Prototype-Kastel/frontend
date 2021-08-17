@@ -4,8 +4,6 @@ import Room from '../views/Room/Room.vue';
 import addRoom from '../views/Room/addRoom.vue';
 import editRoom from '../views/Room/editRoom.vue';
 import RoomType from '../views/Room_Type/roomType.vue';
-import addRoomType from '../views/Room_Type/addRoomType.vue';
-import editRoomType from '../views/Room_Type/editRoomType.vue';
 import RoomPrice from '../views/Room_Price/roomPrice.vue';
 import Service from '../views/Service/service.vue';
 
@@ -37,13 +35,13 @@ const routes = [
   },
   {
     path: '/roomType/addRoomType',
-    name: 'addRoomType',
-    component: addRoomType
+    name: 'itemRoomType.create',
+    component: () => import("@/views/Room_Type/addRoomType.vue")
   },
   {
-    path: '/roomType/editRoomType',
-    name: 'editRoomType',
-    component: editRoomType
+    path: '/roomType/edit/:id',
+    name: 'itemRoomType.edit',
+    component: () => import("@/views/Room_Type/editRoomType.vue")
   },
   {
     path: '/roomPrice',

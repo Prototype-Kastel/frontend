@@ -37,41 +37,25 @@
                 <thead class="thead-light">
                   <tr>
                     <th>No</th>
-                    <th>Nama </th>
-                    <th>Email </th>
-                    <th>Phone</th>
-                    <th>Foto</th>
+                    <th>Nomer Room </th>
+                    <th>Room Type</th>
+                    <th>Floor </th>
+                    <th>Room Status</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Bumina</td>
-                    <td>zudhapratama@gmail.com</td>
-                    <td>085784260416</td>
-                    <td>
-                      
-                    </td>
+                  <tr v-for="itemRoom in rooms" v-bind:key="itemRoom.id">
+                    <td>{{ itemRoom.id }}</td>
+                    <td>{{ itemRoom.no_room }}</td>
+                    <td>{{ itemRoom.room_type.name }}</td>
+                    <td>{{ itemRoom.floor }}</td>
+                    <td>{{ itemRoom.room_status }}</td>
                     <td>
                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-eye"></i></button>
                         <router-link to="/room/editroom">
                           <button class="btn btn-success btn-sm"> <i class="fas fa-edit"></i> </button>
                         </router-link> 
-                        <button class="btn btn-danger btn-sm" data-toggle="sweet-alert" data-sweet-alert="confirm"><i class="fas fa-trash"></i></button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Budi Pratama</td>
-                    <td>budiprtm@gmail.com</td>
-                    <td>085896405623</td>
-                    <td>
-                      
-                    </td>
-                    <td> 
-                      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-eye"></i></button>
-                        <a href="editCustomer.html" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
                         <button class="btn btn-danger btn-sm" data-toggle="sweet-alert" data-sweet-alert="confirm"><i class="fas fa-trash"></i></button>
                     </td>
                   </tr>
@@ -89,14 +73,23 @@
 <script>
 import v_footer from '@/components/v_footer.vue';
 import navbar from '@/components/Navbar.vue';
-
+import axios from "axios";
 export default {
   name: "Room",
-  components:{
+  components: {
     v_footer,
-    navbar
-  }
-  
-
-}
+    navbar,
+  },
+  data() {
+    return {
+      rooms: [],
+    };
+  },
+  mounted() {
+    axios
+      .get("http://127.0.0.1:8000/api/roomprice")
+      .then((res) => (this.rooms = res.data.data))
+      .catch((err) => console.log(err));
+  },
+};
 </script>
