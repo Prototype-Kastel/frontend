@@ -33,7 +33,7 @@ const routes = [
     component: RoomType
   },
   {
-    path: '/roomType/addRoomType',
+    path: '/roomType/create',
     name: 'itemRoomType.create',
     component: () => import("@/views/Room_Type/addRoomType.vue")
   },

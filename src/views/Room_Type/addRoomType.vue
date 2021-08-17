@@ -103,12 +103,12 @@ export default {
   setup() {
     //   data binding
     const itemRoomType = reactive({
-      name: "",
-      bed_type: "",
-      capacity: "",
-      gender: "",
-      size: "",
-      notes: ""
+      name: '',
+      bed_type: '',
+      capacity: '',
+      gender: '',
+      size: '',
+      notes: ''
     });
 
     const validation = ref([]);
@@ -117,7 +117,7 @@ export default {
 
     function store() {
       axios
-        .post("http://127.0.0.1:8000/api/roomtype", itemRoomType)
+        .post("http://127.0.0.1:8000/api/roomtype/store", itemRoomType)
         .then(() => {
           router.push({
             name: "RoomType",
