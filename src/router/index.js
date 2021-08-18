@@ -32,7 +32,7 @@ const routes = [
   },
   {
     path: '/roomType',
-    name: 'RoomType',
+    name: 'roomtype',
     component: RoomType
   },
   {
@@ -41,8 +41,8 @@ const routes = [
     component: addRoomType
   },
   {
-    path: '/roomType/editRoomType',
-    name: 'editRoomType',
+    path: '/roomType/editRoomType/:id',
+    name: 'roomtype.edit',
     component: editRoomType
   },
   {
