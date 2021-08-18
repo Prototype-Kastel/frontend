@@ -25,7 +25,7 @@
             </nav>
           </div>
           <div class="col-lg-6 col-5 text-right">
-            <router-link to="/roomType/addRoomType">
+            <router-link to="/roomType/create">
               <span class="btn btn-neutral btn-sm">Tambah Data</span>
             </router-link>
           </div>
