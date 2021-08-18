@@ -16,9 +16,9 @@
                     </nav>
                     </div>
                      <div class="col-lg-6 col-5 text-right">
-                      <router-link to="/room/addroom">
-                        <span class="btn btn-neutral btn-sm">Tambah Data</span>
-                      </router-link>
+                      <a  class="btn btn-sm btn-neutral">
+                        <router-link to="/room/create">Tambah Data</router-link>
+                      </a>
                     </div>
                 </div>
               </div>

@@ -18,9 +18,9 @@
                 </div>
               </div>
             </div>
-    </div>
+  </div>
 
-    <div class="container-fluid mt--6">
+  <div class="container-fluid mt--6">
     <div class="card mb-4">
         <!-- Card header -->
         <div class="card-header">
@@ -36,15 +36,18 @@
           </div>
           <div class="form-group">
             <label for="">Floor</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" v-model="itemRoom.floor">
+          </div>
+          <div class="form-group">
+            <label for="">Floor</label>
+            <input type="text" class="form-control" v-model="itemRoom.room_status">
           </div>
           <div class="form-group">
               <label for="">Notes</label>
-              <textarea name="" class="form-control" id="" cols="30" rows="5"></textarea>
+              <textarea name="" class="form-control" id="" cols="30" rows="5" v-model="itemRoom.notes"></textarea>
           </div>
           <div>
               <button type="submit" class="btn btn-primary btn-sm" >Update</button>
-              <button type="reset" class="btn btn-neutral btn-sm">Reset</button>
           </div>    
         </div>
       </div>
@@ -79,7 +82,7 @@ setup() {
       const route = useRoute();
 
         onMounted(() => {
-            axios.get(`http://127.0.0.1:8000/api/room/${route.params.id}/show`)
+            axios.get(`http://127.0.0.1:8000/api/room/${route.params.id}`)
             .then((result) => {
                 rooms.no_room = result.data.data.room
                 rooms.floor = result.data.data.floor
@@ -94,7 +97,7 @@ setup() {
             )
             .then(() => {
                 router.push({
-                    name : 'rooms'
+                    name : 'room'
                 })
             }).catch((err) => {
                 validation.value = err.response.data
