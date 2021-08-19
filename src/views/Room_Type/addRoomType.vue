@@ -31,45 +31,69 @@
       <div class="card-body">
         <!-- Form groups used in grid -->
         <form @submit.prevent="store()">
-          <div class="form-group">
-            <label for="">Name </label>
-            <input type="text" class="form-control" v-model="itemRoomType.name" />
-            <div v-if="validation.name" class="text-danger">
-              {{ validation.name[0] }}
+          <div class="row">
+            <div class="col-md-6">
+            <div class="form-group">
+              <label for="">Name </label>
+              <input type="text" class="form-control" v-model="itemRoomType.name" />
+              <div v-if="validation.name" class="text-danger">
+                {{ validation.name[0] }}
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                  <label for="">Bed Type </label>
+                  <input type="text" class="form-control" v-model="itemRoomType.bed_type" />
+                  <div v-if="validation.bed_type" class="text-danger">
+                    {{ validation.bed_type[0] }}
+                  </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+                 <div class="form-group">
+                    <label for="">Size </label>
+                    <input type="text" class="form-control" v-model="itemRoomType.size" />
+                    <div v-if="validation.size" class="text-danger">
+                      {{ validation.size[0] }}
+                    </div>
+                </div>
             </div>
           </div>
-          <div class="form-group">
-            <label for="">Bed Type </label>
-            <input type="text" class="form-control" v-model="itemRoomType.bed_type" />
-            <div v-if="validation.category" class="text-danger">
-              {{ validation.category[0] }}
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="">Capacity </label>
+                <input type="number" class="form-control" v-model="itemRoomType.capacity" />
+                <div v-if="validation.capacity" class="text-danger">
+                  {{ validation.capacity[0] }}
+                </div>
+             </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                  <label for="">Gender </label>
+                  <select class="form-control" v-model="itemRoomType.gender">
+                    <option value="male" selected>Male</option>
+                    <option value="female">Female</option>
+                    <option value="all">All</option>
+                  </select>
+                  <div v-if="validation.gender" class="text-danger">
+                    {{ validation.gender[0] }}
+                  </div>
+              </div>
             </div>
           </div>
-          <div class="form-group">
-            <label for="">Size </label>
-            <input type="text" class="form-control" v-model="itemRoomType.size" />
-            <div v-if="validation.price" class="text-danger">
-              {{ validation.price[0] }}
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="">Capacity </label>
-            <input type="number" class="form-control" v-model="itemRoomType.capacity" />
-            <div v-if="validation.stock" class="text-danger">
-              {{ validation.stock[0] }}
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="">Gender </label>
-            <select class="form-control" v-model="itemRoomType.gender">
-              <option value="male" selected>Male</option>
-              <option value="female">Female</option>
-              <option value="all">All</option>
-            </select>
-            <div v-if="validation.notes" class="text-danger">
-              {{ validation.notes[0] }}
-            </div>
-          </div>
+            <div class="form-group">
+                  <label for="">Esktra Service </label>
+                  <select class="form-control" multiple v-model="itemRoomType.room_type_facility" >
+                    <option selected>masukan pilihan anda</option>
+                    <option v-for="(services,index) in service.data" :key="index" :value="services.id">{{services.name}}</option>
+                  </select>
+                  <div v-if="validation.gender" class="text-danger">
+                    {{ validation.gender[0] }}
+                  </div>
+              </div>    
           <div class="form-group">
             <label for="">Notes</label>
             <textarea type="text" class="form-control" v-model="itemRoomType.notes" />
@@ -77,6 +101,15 @@
               {{ validation.category[0] }}
             </div>
           </div>
+            </div>
+            <div class="col-md-6">
+             <div class="form-group">
+               <label for="">Gallery</label>
+               <input type="file" @change="previewFiles" multiple class="form-control">
+             </div>
+            </div>
+          </div>
+        
           <div class="form-group">
             <button class="btn btn-primary">Submit</button>
           </div>
@@ -90,7 +123,7 @@
 <script>
 import v_footer from "@/components/v_footer.vue";
 import navbar from "@/components/Navbar.vue";
-import { reactive, ref } from "vue";
+import {onMounted,reactive,ref } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
 
@@ -108,19 +141,41 @@ export default {
       capacity: '',
       gender: '',
       size: '',
+      room_type_facility :[],
+      galleries:[],
       notes: ''
     });
 
+    let service = ref([]);
+    let dataPhoto = ref([]);
     const validation = ref([]);
     //   redirect setelah store
     const router = useRouter();
 
+    onMounted(() => {
+      axios.get('api/services/facility')
+      .then((result) => {
+        service.value = result.data  
+      }).catch((err) => {
+        console.log(err.response);
+      });
+    })
+
+    function previewFiles(event) {
+          dataPhoto=event.target.files;
+          
+          let formData = new FormData();
+          formData.append(dataPhoto);
+          itemRoomType.galleries.append(formData);
+    }
+
     function store() {
+      console.log(itemRoomType);
       axios
-        .post("http://127.0.0.1:8000/api/roomtype/store", itemRoomType)
+        .post("api/roomtype/store", itemRoomType)
         .then(() => {
           router.push({
-            name: "RoomType",
+            name: "roomtype",
           });
         })
         .catch((err) => {
@@ -132,6 +187,8 @@ export default {
       validation,
       router,
       store,
+      service,
+      previewFiles
     };
   },
 };

@@ -24,6 +24,11 @@
               </ol>
             </nav>
           </div>
+           <div class="col-lg-6 col-5 text-right">
+                          <a class="btn btn-sm btn-neutral">
+                            <router-link to="/room">Kembali</router-link>
+                          </a>
+          </div>
         </div>
       </div>
     </div>
@@ -64,8 +69,10 @@
           <div class="form-group">
             <label for="">Room Status</label>
             <select v-model="rooms.room_status" class="form-control">
-              <option :value="Vacant_Dirty">Vacant Dirty</option>
-              <option :value="Vacant_Clean">Vacant Clean</option>
+              <option value="Vacant_Dirty">Vacant Dirty</option>
+              <option value="Vacant_Clean">Vacant Clean</option>
+              <option value="Occupied">Occupied</option>
+              <option value="Lost_of_Order">Lost Of Order</option>
             </select>
           </div>
           <div class="form-group">
@@ -118,8 +125,6 @@ export default {
       floor: "",
       room_status: "",
       smooking_area: "",
-      start_date: "",
-      end_date: "",
       notes: ""
     });
 
@@ -132,7 +137,7 @@ export default {
     //get data from room type
     onMounted(() => {
       axios
-        .get("http://127.0.0.1:8000/api/roomtype")
+        .get("api/roomtype")
         .then((result) => {
           roomtypes.value = result.data;
         })
@@ -143,7 +148,7 @@ export default {
 
     function store() {
       axios
-        .post("http://127.0.0.1:8000/api/room/store", rooms)
+        .post("api/room/store", rooms)
         .then(() => {
           router.push({
             name: "room",

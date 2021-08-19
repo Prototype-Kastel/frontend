@@ -13,7 +13,7 @@ const routes = [
   },
   {
     path: '/room',
-    name: 'Room',
+    name: 'room',
     component: Room
   },
   {
@@ -23,7 +23,7 @@ const routes = [
   },
   {
     path: '/room/editroom/:id',
-    name: 'itemRoom.edit',
+    name: 'room.edit',
     component: () => import("@/views/Room/editRoom.vue")
   },
   {
@@ -33,13 +33,13 @@ const routes = [
   },
   {
     path: '/roomType/create',
-    name: 'itemRoomType.create',
+    name: 'roomtype.create',
     component: () => import("@/views/Room_Type/addRoomType.vue")
   },
   {
     path: '/roomType/editRoomType/:id',
     name: 'roomtype.edit',
-    component: editRoomType
+    component: () => import("@/views/Room_Type/editRoomType.vue")
   },
   {
     path: '/roomprice',

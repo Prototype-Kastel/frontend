@@ -45,15 +45,15 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(itemRoom,index) in rooms.data" v-bind:key="index">
-                    <td>{{ itemRoom.id }}</td>
+                  <tr v-for="(itemRoom,index) in rooms.data" :key="index">
+                    <td>{{ index + 1}}</td>
                     <td>{{ itemRoom.no_room }}</td>
                     <td>{{ itemRoom.room_type.name }}</td>
                     <td>{{ itemRoom.floor }}</td>
                     <td>{{ itemRoom.room_status }}</td>
                     <td>
                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-eye"></i></button>
-                        <router-link :to=" {name: 'itemRoom.edit', params:{id:itemRoom.id} } "><span class="btn btn-success btn-sm mr-1"><i class="fas fa-edit"></i></span></router-link>
+                        <router-link :to=" {name: 'room.edit', params:{id:itemRoom.id} } "><span class="btn btn-success btn-sm mr-1"><i class="fas fa-edit"></i></span></router-link>
                         <button class="btn btn-danger btn-sm" data-toggle="sweet-alert" data-sweet-alert="confirm"><i class="fas fa-trash"></i></button>
                     </td>
                   </tr>
@@ -84,7 +84,7 @@ export default {
 
     onMounted(() =>  {
       // get data from api endpoint
-      axios.get('http://127.0.0.1:8000/api/room')
+      axios.get('api/room')
       .then((result) => {
         rooms.value = result.data
       }).catch((err) =>{

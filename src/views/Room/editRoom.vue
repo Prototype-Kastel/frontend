@@ -26,30 +26,64 @@
         <div class="card-header">
           <h3 class="mb-0">Update Data Room</h3>
         </div>
-        
-        <!-- Card body -->
         <div class="card-body">
-          <!-- Form groups used in grid -->
-          <div class="form-group">
-            <label for="">No Room</label>
-            <input type="text" class="form-control" v-model="itemRoom.no_room">
-          </div>
-          <div class="form-group">
-            <label for="">Floor</label>
-            <input type="text" class="form-control" v-model="itemRoom.floor">
-          </div>
-          <div class="form-group">
-            <label for="">Floor</label>
-            <input type="text" class="form-control" v-model="itemRoom.room_status">
-          </div>
-          <div class="form-group">
-              <label for="">Notes</label>
-              <textarea name="" class="form-control" id="" cols="30" rows="5" v-model="itemRoom.notes"></textarea>
-          </div>
-          <div>
-              <button type="submit" class="btn btn-primary btn-sm" >Update</button>
-          </div>    
+          <form @submit.prevent="update()">
+              <!-- Form groups used in grid -->
+              <div class="form-group">
+                <label for="">No Room</label>
+                <input type="text" class="form-control" v-model="rooms.no_room" />
+              </div>
+              <div class="form-group">
+                <label for="">Room Type </label>
+                <select v-model="rooms.roomType_id" class="form-control">
+                  <option
+                    v-for="(roomType, index) in roomtypes.data"
+                    :key="index"
+                    :value="roomType.id"
+                  >
+                    {{ roomType.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="">Floor</label>
+                <input type="text" class="form-control" v-model="rooms.floor"/>
+              </div>
+              <div class="form-group">
+                <label for="">Room Status</label>
+                <select v-model="rooms.room_status" class="form-control">
+                  <option :value="rooms.room_status">{{rooms.room_status}}</option>
+                  <option value="Vacant_Dirty">Vacant Dirty</option>
+                  <option value="Vacant_Clean">Vacant Clean</option>
+                  <option value="Occupied">Occupied</option>
+                  <option value="Lost_of_Order">Lost Of Order</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="">Smooking Area</label>
+                <select v-model="rooms.smooking_area" class="form-control">
+                  <option :value="1">Ya</option>
+                  <option :value="0">Tidak</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="">Notes</label>
+                <textarea
+                  name=""
+                  class="form-control"
+                  id=""
+                  cols="30"
+                  rows="5"
+                  v-model="rooms.notes"
+                ></textarea>
+              </div>
+              <div>
+                <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                <button type="reset" class="btn btn-neutral btn-sm">Reset</button>
+              </div>
+          </form>
         </div>
+        
       </div>
       <v_footer/>
       </div>
@@ -71,10 +105,15 @@ export default {
 setup() {
     //   data binding
       let rooms = reactive({
-          no_room : '',
-          floor :'',
-          room_status :''
+           no_room: "",
+           roomType_id: "",
+           floor: "",
+           room_status: "",
+           smooking_area: "",
+           notes: ""
       });
+
+      let roomtypes = ref([]);
 
       const validation = ref([]);
     //   redirect setelah store
@@ -82,18 +121,29 @@ setup() {
       const route = useRoute();
 
         onMounted(() => {
-            axios.get(`http://127.0.0.1:8000/api/room/${route.params.id}`)
+            axios
+              .get("api/roomtype")
+              .then((result) => {
+                roomtypes.value = result.data;
+              })
+              .catch((err) => {
+                console.log(err.response);
+              });
+
+            axios.get(`api/room/${route.params.id}/show`)
             .then((result) => {
-                rooms.no_room = result.data.data.room
+                rooms.no_room = result.data.data.no_room
+                rooms.roomType_id = result.data.data.roomType_id
                 rooms.floor = result.data.data.floor
                 rooms.room_status = result.data.data.room_status
+                rooms.notes = result.data.data.notes
             }).catch((err) => {
                 console.log(err.response.data);
             });
         })
         function update() { 
             axios.put(
-                `http://127.0.0.1:8000/api/room/${route.params.id}/update`, rooms
+                `api/room/${route.params.id}/update`, rooms
             )
             .then(() => {
                 router.push({
@@ -105,8 +155,10 @@ setup() {
         }
         return {
             rooms,
+            roomtypes,
             validation,
             router,
+            route,
             update
         }
 

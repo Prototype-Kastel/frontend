@@ -17,9 +17,8 @@
                       </div>
                       <div class="col-lg-6 col-5 text-right">
                           <a class="btn btn-sm btn-neutral">
-                            <router-link to="/roomprice">Kembali</router-link>
+                            <router-link to="/room">Kembali</router-link>
                           </a>
-                        
                       </div>
                   </div>
                   </div>
