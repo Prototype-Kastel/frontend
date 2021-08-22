@@ -4,6 +4,7 @@ import Room from '../views/Room/Room.vue';
 import RoomType from '../views/Room_Type/roomType.vue';
 import roomprice from '../views/Room_Price/roomPrice.vue';
 import Service from '../views/Service/service.vue';
+import CheckIn from '../views/Check_in/checkIn.vue';
 
 const routes = [
   {
@@ -76,11 +77,11 @@ const routes = [
   //   name: 'Booking',
   //   component: Booking
   // },
-  // {
-  //   path: '/checkin',
-  //   name: 'ChenkIn',
-  //   component: ChenkIn
-  // },
+  {
+    path: '/checkIn',
+    name: 'CheckIn',
+    component: CheckIn
+  },
   // {
   //   path: '/checkout',
   //   name: 'Checkout',
