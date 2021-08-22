@@ -54,7 +54,7 @@
                     <td>
                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-eye"></i></button>
                         <router-link :to=" {name: 'room.edit', params:{id:itemRoom.id} } "><span class="btn btn-success btn-sm mr-1"><i class="fas fa-edit"></i></span></router-link>
-                        <button class="btn btn-danger btn-sm" data-toggle="sweet-alert" data-sweet-alert="confirm"><i class="fas fa-trash"></i></button>
+                       <button class="btn btn-danger btn-sm" @click.prevent="destroy(itemRoom.id,index)"><i class="fas fa-trash"></i></button>
                     </td>
                   </tr>
                  
@@ -73,6 +73,9 @@ import v_footer from '@/components/v_footer.vue';
 import navbar from '@/components/Navbar.vue';
 import axios from "axios";
 import { onMounted, ref} from 'vue';
+import { createToast } from 'mosha-vue-toastify';
+import 'mosha-vue-toastify/dist/style.css'
+
 export default {
   name: "Room",
   components: {
@@ -92,8 +95,36 @@ export default {
       });
     });
 
+     function destroy(id,index) {
+        let response  = window.confirm('apakah anda yakin ?');
+        if (response == true) {
+            axios.delete(`api/room/${id}/destroy`)
+            .then(() => {
+              rooms.value.data.splice(index,1);
+              createToast('Data Berhasil dihapus',
+              {
+                  showIcon: 'true',
+                  position: 'top-right',
+                  type: 'success',
+                  transition: 'bounce',
+              });
+            }).catch((err) => {
+              console.log(err.response.data);
+            });
+        } else {
+           createToast('Anda tidak berhasil menghapus',
+              {
+                  showIcon: 'true',
+                  position: 'top-right',
+                  type: 'danger',
+                  transition: 'zoom',
+              });
+        }  
+    }
+
     return {
-      rooms
+      rooms,
+      destroy
     }
   }
 

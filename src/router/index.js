@@ -76,16 +76,21 @@ const routes = [
   //   name: 'Booking',
   //   component: Booking
   // },
-  // {
-  //   path: '/checkin',
-  //   name: 'ChenkIn',
-  //   component: ChenkIn
-  // },
-  // {
-  //   path: '/checkout',
-  //   name: 'Checkout',
-  //   component: Checkout
-  // },
+  {
+    path: '/checkout',
+    name: 'checkout',
+    component: () => import("@/views/Checkout/checkout.vue")
+  },
+  {
+    path: '/checkout/edit/:id',
+    name: 'checkout.edit',
+    component: () => import("@/views/Checkout/editcheckout.vue")
+  },
+  {
+    path: '/payment',
+    name: 'payment',
+    component: () => import("@/views/payment/payment.vue")
+  },
   {
     path: '/about',
     name: 'About',

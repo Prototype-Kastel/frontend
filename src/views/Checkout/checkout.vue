@@ -15,11 +15,6 @@
                           </ol>
                       </nav>
                       </div>
-                      <div class="col-lg-6 col-5 text-right">
-                          <a href="" class="btn btn-sm btn-neutral">
-                            <router-link to="/service/create">Tambah Data</router-link>
-                          </a>
-                      </div>
                   </div>
                   </div>
               </div>
@@ -30,31 +25,42 @@
         <div class="card">
             <!-- Card header -->
             <div class="card-header">
-              <h3 class="mb-0">Datatable Service</h3>
+              <h3 class="mb-0">Datatable Checkout</h3>
             </div>
             <div class="table-responsive py-4">
               <table class="table table-flush" id="datatable-basic">
                 <thead class="thead-light">
                   <tr>
                     <th>No</th>
-                    <th>Name </th>
-                    <th>Category </th>
-                    <th>Price</th>
-                    <th>Stock</th>
-                    <th>action</th>
+                    <th>No Booking</th>
+                    <th>Nama Tamu </th>
+                    <th>No Room </th>
+                    <th>Check In</th>
+                    <th>Check Out</th>
+                    <th>Status</th>
+                    <th>Action</th>  
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(service,index) in services.data" :key="index">
+                  <tr v-for="(booking,index) in bookings.data" :key="index">
                     <td>{{index + 1}}</td>
-                    <td>{{service.name}}</td>
-                    <td>{{service.category}}</td>
-                    <td>{{service.price}}</td>
-                    <td>{{service.stock}}</td>
+                    <td>{{booking.no_booking}}</td>
+                    <td>{{booking.booking_customer[0].customer.name}}</td>
+                    <td>{{booking.no_booking}}</td>
+                    <td>{{booking.check_in}}</td>
+                    <td>{{booking.check_out}}</td>
+                    <td v-if="booking.check_out_at === null"><span class="badge badge-danger">Belum Check Out</span></td>
+                    <td v-else ><span class="badge badge-primary">{{booking.check_out_at}}</span></td>  
                     <td>
                         <router-link to="/service"><span class="btn btn-info btn-sm mr-1"><i class="fas fa-eye"></i></span></router-link>
-                        <router-link :to=" {name: 'service.edit', params:{id:service.id} } "><span class="btn btn-success btn-sm mr-1"><i class="fas fa-edit"></i></span></router-link>
-                        <button class="btn btn-danger btn-sm" @click.prevent="destroy(service.id,index)"><i class="fas fa-trash"></i></button>
+                        <template v-if="booking.check_out_at !== null">
+                            <button class="btn btn-success btn-sm mr-1" disabled><i class="fas fa-edit"></i></button>
+                        </template>
+                        <template v-else>
+                             <router-link :to="'/checkout/edit/'+ booking.id "><span class="btn btn-success btn-sm mr-1"><i class="fas fa-edit"></i></span></router-link>
+                        </template>
+                       
+                        <!-- <button class="btn btn-danger btn-sm" @click.prevent="destroy(service.id,index)"><i class="fas fa-trash"></i></button> -->
                     </td>
                   </tr>     
                 </tbody>
@@ -71,9 +77,10 @@
 import v_footer from '@/components/v_footer.vue';
 import navbar from '@/components/Navbar.vue';
 import axios from 'axios';
-import {onMounted,ref} from "vue";
-import { createToast } from 'mosha-vue-toastify';
-import 'mosha-vue-toastify/dist/style.css'
+import {ref,onMounted} from "vue";
+// import { createToast } from 'mosha-vue-toastify';
+
+import 'mosha-vue-toastify/dist/style.css'   
 
 export default {
   name: "service",
@@ -81,49 +88,28 @@ export default {
     v_footer,
     navbar
   },
-  setup(){
-    // state reactive
-      let services = ref([]);
+  setup() {
+      let bookings = ref([]);
       onMounted(() => {
-        // get data from axios in services
-        axios.get('api/services')
+         
+
+         axios.get('api/checkout')
         .then((result) => {
-            services.value = result.data;
+            bookings.value = result.data;
+            
         }).catch((err) => {
             console.log(err.response);
-        });
-    });
-
-    function destroy(id,index) {
-        let response  = window.confirm('apakah anda yakin ?');
-        if (response == true) {
-            axios.delete(`api/services/${id}/delete`)
-            .then(() => {
-              services.value.data.splice(index,1);
-              createToast('Data Berhasil dihapus',
-              {
-                  showIcon: 'true',
-                  position: 'top-right',
-                  type: 'success',
-                  transition: 'bounce',
-              });
-            }).catch((err) => {
-              console.log(err.response.data);
-            });
-        } else {
-          console.log('gagal');
-        }  
-    }
-
+        }); 
+      })
 
     return {
-      services,
-      destroy
-      
+      bookings
     }
-    
-    
   }
+
+  
+ 
 
 }
 </script>
+

@@ -74,7 +74,7 @@
                   <td>
                    <router-link to="/roomprice"><span class="btn btn-info btn-sm mr-1"><i class="fas fa-eye"></i></span></router-link>
                    <router-link :to=" {name: 'roomprice.edit', params:{id:itemRoomPrice.id} } "><span class="btn btn-success btn-sm mr-1"><i class="fas fa-edit"></i></span></router-link>
-                   <router-link to="/roomprice"><span class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></span></router-link>
+                   <button class="btn btn-danger btn-sm" @click.prevent="destroy(itemRoomPrice.id,index)"><i class="fas fa-trash"></i></button>
                   </td>
                 </tr>
               </tbody>
@@ -92,6 +92,8 @@ import v_footer from "@/components/v_footer.vue";
 import navbar from "@/components/Navbar.vue";
 import axios from "axios";
 import {onMounted,ref} from "vue";
+import { createToast } from 'mosha-vue-toastify';
+import 'mosha-vue-toastify/dist/style.css'
 
 export default {
   name: "RoomPrice",
@@ -112,8 +114,36 @@ export default {
         console.log(err.response);
       });
     })
+
+    function destroy(id,index) {
+        let response  = window.confirm('apakah anda yakin ?');
+        if (response == true) {
+            axios.delete(`api/roomprice/${id}/destroy`)
+            .then(() => {
+              roomPrices.value.data.splice(index,1);
+              createToast('Data Berhasil dihapus',
+              {
+                  showIcon: 'true',
+                  position: 'top-right',
+                  type: 'success',
+                  transition: 'bounce',
+              });
+            }).catch((err) => {
+              console.log(err.response.data);
+            });
+        } else {
+           createToast('Anda tidak berhasil menghapus',
+              {
+                  showIcon: 'true',
+                  position: 'top-right',
+                  type: 'danger',
+                  transition: 'zoom',
+              });
+        }  
+    }
     return {
-      roomPrices
+      roomPrices,
+      destroy
     }
     
   }

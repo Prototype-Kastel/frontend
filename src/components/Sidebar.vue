@@ -51,16 +51,18 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="Bookings/Check_Out/checkOut.html" class="nav-link">
-                        <span class="sidenav-mini-icon"> </span>
-                        <span class="sidenav-normal"> Check Out </span>
-                      </a>
+                       <a class="nav-link">
+                            <router-link to="/checkout">
+                              <span class="nav-link-text text-default">Check Out</span>
+                            </router-link>
+                        </a>
                     </li>
                     <li class="nav-item">
-                      <a href="Bookings/Payment/payment.html" class="nav-link">
-                        <span class="sidenav-mini-icon">  </span>
-                        <span class="sidenav-normal"> Payment </span>
-                      </a>
+                         <a class="nav-link">
+                            <router-link to="/payment">
+                                <span class="nav-link-text text-default">Payments</span>
+                              </router-link>
+                          </a>
                     </li>
                   
                   </ul>

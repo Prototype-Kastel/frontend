@@ -30,33 +30,33 @@
       <!-- Card body -->
       <div class="card-body">
         <!-- Form groups used in grid -->
-        <form @submit.prevent="store()">
+        <form @submit.prevent="store()" >
           <div class="row">
             <div class="col-md-6">
             <div class="form-group">
               <label for="">Name </label>
-              <input type="text" class="form-control" v-model="itemRoomType.name" />
-              <div v-if="validation.name" class="text-danger">
+              <input type="text" class="form-control" v-model="name" />
+              <!-- <div v-if="validation.name" class="text-danger">
                 {{ validation.name[0] }}
-              </div>
+              </div> -->
           </div>
           <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                   <label for="">Bed Type </label>
-                  <input type="text" class="form-control" v-model="itemRoomType.bed_type" />
-                  <div v-if="validation.bed_type" class="text-danger">
+                  <input type="text" class="form-control" v-model="bed_type" />
+                  <!-- <div v-if="validation.bed_type" class="text-danger">
                     {{ validation.bed_type[0] }}
-                  </div>
+                  </div> -->
               </div>
             </div>
             <div class="col-md-6">
                  <div class="form-group">
                     <label for="">Size </label>
-                    <input type="text" class="form-control" v-model="itemRoomType.size" />
-                    <div v-if="validation.size" class="text-danger">
+                    <input type="text" class="form-control" v-model="size" />
+                    <!-- <div v-if="validation.size" class="text-danger">
                       {{ validation.size[0] }}
-                    </div>
+                    </div> -->
                 </div>
             </div>
           </div>
@@ -64,52 +64,60 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="">Capacity </label>
-                <input type="number" class="form-control" v-model="itemRoomType.capacity" />
-                <div v-if="validation.capacity" class="text-danger">
+                <input type="number" class="form-control" v-model="capacity" />
+                <!-- <div v-if="validation.capacity" class="text-danger">
                   {{ validation.capacity[0] }}
-                </div>
+                </div> -->
              </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                   <label for="">Gender </label>
-                  <select class="form-control" v-model="itemRoomType.gender">
+                  <select class="form-control" v-model="gender">
                     <option value="male" selected>Male</option>
                     <option value="female">Female</option>
                     <option value="all">All</option>
                   </select>
-                  <div v-if="validation.gender" class="text-danger">
+                  <!-- <div v-if="validation.gender" class="text-danger">
                     {{ validation.gender[0] }}
-                  </div>
+                  </div> -->
               </div>
             </div>
           </div>
             <div class="form-group">
                   <label for="">Esktra Service </label>
-                  <select class="form-control" multiple v-model="itemRoomType.room_type_facility" >
-                    <option selected>masukan pilihan anda</option>
-                    <option v-for="(services,index) in service.data" :key="index" :value="services.id">{{services.name}}</option>
-                  </select>
-                  <div v-if="validation.gender" class="text-danger">
+                    <div>
+                        <Multiselect    
+                        mode="tags"
+                        :loading="true"
+                        placeholder="Select your facility"
+                        :value="this.id"
+                        :options="this.tampung"
+                        :searchable="true"
+                        :multiplaceLabel="this.tampung"
+                        />
+                    </div>
+
+                  <!-- <div v-if="validation.gender" class="text-danger">
                     {{ validation.gender[0] }}
-                  </div>
-              </div>    
+                  </div> -->
+              </div>  
           <div class="form-group">
             <label for="">Notes</label>
-            <textarea type="text" class="form-control" v-model="itemRoomType.notes" />
-            <div v-if="validation.category" class="text-danger">
+            <textarea type="text" class="form-control" v-model="notes" />
+            <!-- <div v-if="validation.category" class="text-danger">
               {{ validation.category[0] }}
-            </div>
+            </div> -->
           </div>
             </div>
             <div class="col-md-6">
              <div class="form-group">
                <label for="">Gallery</label>
-               <input type="file" @change="previewFiles" multiple class="form-control">
+               <input type="file" v-on:change="previewFiles"  class="form-control">
              </div>
             </div>
+
           </div>
-        
           <div class="form-group">
             <button class="btn btn-primary">Submit</button>
           </div>
@@ -121,9 +129,10 @@
 </template>
 
 <script>
+
+import Multiselect from '@vueform/multiselect';
 import v_footer from "@/components/v_footer.vue";
 import navbar from "@/components/Navbar.vue";
-import {onMounted,reactive,ref } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
 
@@ -132,64 +141,69 @@ export default {
   components: {
     v_footer,
     navbar,
+    Multiselect
   },
-  setup() {
-    //   data binding
-    const itemRoomType = reactive({
-      name: '',
-      bed_type: '',
-      capacity: '',
-      gender: '',
-      size: '',
-      room_type_facility :[],
-      galleries:[],
-      notes: ''
-    });
-
-    let service = ref([]);
-    let dataPhoto = ref([]);
-    const validation = ref([]);
-    //   redirect setelah store
-    const router = useRouter();
-
-    onMounted(() => {
-      axios.get('api/services/facility')
-      .then((result) => {
-        service.value = result.data  
-      }).catch((err) => {
-        console.log(err.response);
-      });
-    })
-
-    function previewFiles(event) {
-          dataPhoto=event.target.files;
+ data() {
+   return{
+          name: '',
+          bed_type: '',
+          capacity: '',
+          gender: '',
+          size: '',
+          room_type_facility :[],
+          galleries: null,
+          notes: '', 
+          option:['zudha','kediri'],
+          router : useRouter(),
+          value: null,
+          tampung:[],
+          id:[],
           
-          let formData = new FormData();
-          formData.append(dataPhoto);
-          itemRoomType.galleries.append(formData);
-    }
+   }
+},
+   mounted() {
+     this.getServices();
+   },
+   methods: {
+     async getServices(){
+       let response = await axios.get('api/services/facility');
+       if (response.status == 200) {
+         this.service = response.data.data
+       }
 
-    function store() {
-      console.log(itemRoomType);
-      axios
-        .post("api/roomtype/store", itemRoomType)
-        .then(() => {
-          router.push({
-            name: "roomtype",
-          });
-        })
-        .catch((err) => {
-          validation.value = err.response.data;
-        });
-    }
-    return {
-      itemRoomType,
-      validation,
-      router,
-      store,
-      service,
-      previewFiles
-    };
-  },
-};
+      for (let index = 0; index < this.service.length; index++) {
+         this.tampung[index] = this.service[index].name;
+         this.id[index] = this.service[index].id;
+      }
+     },
+
+     previewFiles(event){
+        let dataPhoto = event.target.files[0];
+        this.galleries = dataPhoto;
+        console.log(this.galleries);
+     },
+     async store(){
+        
+        // let fd = new FormData();
+        // fd.append('name',this.name);
+        // fd.append('bed_type',this.bed_type);
+        // fd.append('capacity',this.capacity);
+        // fd.append('gender',this.gender);
+        // fd.append('size',this.size);
+        // fd.append('room_type_facility[]',this.room_type_facility);
+        // fd.append('galleries', this.galleries);
+        // fd.append('notes',this.notes);
+
+        console.log(this.id);
+      //  let response = await axios.post('api/roomtype/store',fd)
+      //  if (response.code == 200) {
+      //    console.log(response.data);
+      //  }
+     },
+     
+   }
+ }
+
 </script>
+<style src="@vueform/multiselect/themes/default.css"></style>
+

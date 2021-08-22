@@ -50,8 +50,8 @@
           <div class="form-group">
             <label for="">Bed Type </label>
             <input type="text" class="form-control" v-model="itemRoomType.bed_type" />
-            <div v-if="validation.category" class="text-danger">
-              {{ validation.category[0] }}
+            <div v-if="validation.bed_type" class="text-danger">
+              {{ validation.bed_type[0] }}
             </div>
           </div>
           <div class="form-group">
@@ -75,6 +75,13 @@
               <option value="female">Female</option>
               <option value="all">All</option>
             </select>
+            <div v-if="validation.gender" class="text-danger">
+              {{ validation.gender[0] }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="">Notes </label>
+            <input type="number" class="form-control" v-model="itemRoomType.notes" />
             <div v-if="validation.notes" class="text-danger">
               {{ validation.notes[0] }}
             </div>
@@ -105,10 +112,14 @@ export default {
     //   data binding
     let itemRoomType = reactive({
       name: "",
-      category: "",
-      price: "",
-      stock: "",
-      notes: "",
+      bed_type: '',
+      capacity: '',
+      gender: '',
+      size: '',
+      room_type_facility :[],
+      galleries: null,
+      notes: '', 
+      service:[],
     });
 
     const validation = ref([]);
@@ -118,27 +129,31 @@ export default {
 
     onMounted(() => {
       axios
-        .get(`http://127.0.0.1:8000/api/roomtype/${route.params.id}`)
+        .get(`api/roomtype/${route.params.id}/show`)
         .then((result) => {
-          itemRoomType.name = result.data.name;
-          itemRoomType.bed_type = result.data.bed_type;
-          itemRoomType.size = result.data.size;
-          itemRoomType.capacity = result.data.capacity;
-          itemRoomType.gender = result.data.gender;
+          itemRoomType.name = result.data.data.name;
+          itemRoomType.bed_type = result.data.data.bed_type;
+          itemRoomType.size = result.data.data.size;
+          itemRoomType.capacity = result.data.data.capacity;
+          itemRoomType.gender = result.data.data.gender;
+          itemRoomType.notes = result.data.data.notes;
+          itemRoomType.galleries = result.data.data.galleries;
         })
         .catch((err) => {
           console.log(err.response.data);
         });
+
+        
     });
     function update() {
       axios
         .put(
-          `http://127.0.0.1:8000/api/roomtype/${route.params.id}/update`,
+          `api/roomtype/${route.params.id}/update`,
           itemRoomType
         )
         .then(() => {
           router.push({
-            name: 'RoomType'
+            name: 'roomtype'
           })
         })
         .catch((err) => {
@@ -154,3 +169,4 @@ export default {
   },
 };
 </script>
+
