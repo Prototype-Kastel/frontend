@@ -83,7 +83,7 @@
                     
                     <li class="nav-item">
                         <a class="nav-link">
-                            <router-link to="/roomPrice">
+                            <router-link to="/roomprice">
                               <span class="nav-link-text text-default">Room Price</span>
                             </router-link>
                         </a>

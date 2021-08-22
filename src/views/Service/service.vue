@@ -19,7 +19,6 @@
                           <a href="" class="btn btn-sm btn-neutral">
                             <router-link to="/service/create">Tambah Data</router-link>
                           </a>
-                        
                       </div>
                   </div>
                   </div>
@@ -86,7 +85,7 @@ export default {
 
       onMounted(() => {
         // get data from axios in services
-        axios.get('http://127.0.0.1:8000/api/services')
+        axios.get('api/services')
         .then((result) => {
             services.value = result.data;
         }).catch((err) => {
