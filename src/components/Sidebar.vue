@@ -39,9 +39,10 @@
                 <div class="collapse" id="booking">
                   <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
-                      <a href="Bookings/Booking/booking.html" class="nav-link">
-                        <span class="sidenav-mini-icon"></span>
-                        <span class="sidenav-normal">Booking Room</span>
+                      <a class="nav-link">
+                        <router-link to="/Booking">
+                          <span class="nav-link-text text-default">Booking</span>
+                        </router-link>
                       </a>
                     </li>
                     <li class="nav-item">

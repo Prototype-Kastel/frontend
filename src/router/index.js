@@ -4,6 +4,10 @@ import Room from '../views/Room/Room.vue';
 import RoomType from '../views/Room_Type/roomType.vue';
 import roomprice from '../views/Room_Price/roomPrice.vue';
 import Service from '../views/Service/service.vue';
+import Booking from '../views/Booking/Booking.vue';
+import addBooking from '../views/Booking/addBooking.vue';
+import editBooking from '../views/Booking/editBooking.vue';
+
 
 const routes = [
   {
@@ -71,11 +75,21 @@ const routes = [
     name: 'service.edit',
     component: () => import("@/views/Service/editService.vue")
   },
-  // {
-  //   path: '/booking',
-  //   name: 'Booking',
-  //   component: Booking
-  // },
+  {
+    path: '/Booking',
+    name: 'Booking',
+    component: Booking
+  },
+  {
+    path: '/Booking/addBooking',
+    name: 'addBooking',
+    component: addBooking
+  },
+  {
+    path: '/Booking/editBooking',
+    name: 'editBooking',
+    component: editBooking
+  },
   // {
   //   path: '/checkin',
   //   name: 'ChenkIn',
