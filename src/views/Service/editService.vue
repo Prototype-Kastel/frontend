@@ -119,7 +119,7 @@ export default {
     //   redirect setelah store
       const router = useRouter();
       const route = useRoute();
-      let loading = false;
+      let loading = ref(false);
       
       
         onMounted(() => {
@@ -134,15 +134,20 @@ export default {
                 console.log(err.response.data);
             });
         })
-        function update() { 
-
+        function update() {   
            loading = true;
             axios.put(
                 `api/services/${route.params.id}/update`,
                 service
             )
             .then(() => {
-                this.loading = false
+                loading = false
+                createToast('Data berhasil diubah',
+                    {
+                    type: 'success',
+                    showIcon: 'true',
+                    transition: 'zoom',
+                    })
                 router.push({
                     name : 'service'
                 })
@@ -154,7 +159,7 @@ export default {
                     showIcon: 'true',
                     transition: 'zoom',
                     })
-                 service.loading = false
+                 loading = false
             })
         }
         return {
