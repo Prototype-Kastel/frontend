@@ -82,6 +82,11 @@ const routes = [
     name: 'CheckIn',
     component: CheckIn
   },
+  {
+    path: '/checkIn/create',
+    name: 'checkIn.create',
+    component: import("@/views/Check_in/addCheckIn.vue")
+  },
   // {
   //   path: '/checkout',
   //   name: 'Checkout',

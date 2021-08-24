@@ -26,7 +26,7 @@
           </div>
           <div class="col-lg-6 col-5 text-right">
             <a class="btn btn-sm btn-neutral">
-              <router-link to="/roomprice/create">Tambah Data</router-link>
+              <router-link to="/checkIn/create">Tambah Data</router-link>
             </a>
           </div>
         </div>
@@ -39,20 +39,21 @@
         <div class="card">
           <!-- Card header -->
           <div class="card-header">
-            <h3 class="mb-0">Datatable Room Price</h3>
+            <h3 class="mb-0">Data Tabel Check In</h3>
           </div>
           <div class="table-responsive py-4">
             <table class="table table-flush" id="datatable-basic">
               <thead class="thead-light">
                 <tr>
                   <th>No</th>
-                  <th>Room Type</th>
-                  <th>Name Price</th>
-                  <th>Price Type</th>
-                  <th>Price</th>
-                  <th>Start Date</th>
-                  <th>Promo Code</th>
-                  <th>Action</th>
+                  <th>No Booking</th>
+                  <th>Nama Tamu</th>
+                  <th>Nama Ruang</th>
+                  <th>Check In</th>
+                  <th>Check Out</th>
+                  <th>Status Check In</th>
+                  <th>Status Ruangan</th>
+                  <th>Aksi</th>
                 </tr>
               </thead>
               <tbody>
@@ -64,26 +65,31 @@
                   <td>
                     {{ itemCheckIn.customer.name }}
                   </td>
+                  <td>
+                    {{ itemCheckIn.customer.id }}
+                  </td>
                   <td>{{ itemCheckIn.check_in }}</td>
                   <td>{{ itemCheckIn.check_out }}</td>
-                  <td>
-                    <!-- <router-link to="/roomprice"
+                  <!-- <td>{{ itemCheckIn.check_in }}</td>
+                  <td>{{ itemCheckIn.check_out }}</td> -->
+                  <!-- <td>
+                    <router-link to="/checkIn"
                       ><span class="btn btn-info btn-sm mr-1"
                         ><i class="fas fa-eye"></i></span
                     ></router-link>
                     <router-link
                       :to="{
-                        name: 'roomprice.edit',
-                        params: { id: itemRoomPrice.id },
+                        name: 'checkIn.edit',
+                        params: { id: itemCheckIn.id },
                       }"
                       ><span class="btn btn-success btn-sm mr-1"
                         ><i class="fas fa-edit"></i></span
                     ></router-link>
-                    <router-link to="/roomprice"
+                    <router-link to="/checkIn"
                       ><span class="btn btn-danger btn-sm"
                         ><i class="fas fa-trash"></i></span
-                    ></router-link> -->
-                  </td>
+                    ></router-link>
+                  </td> -->
                 </tr>
               </tbody>
             </table>
