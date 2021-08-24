@@ -56,10 +56,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr
-                  v-for="(itemRoomPrice,index) in roomPrices.data"
-                  :key="index"
-                >
+                <tr v-for="(itemRoomPrice,index) in roomPrices.data" :key="index" >
                   <td>{{ index + 1 }}</td>
                   <td>
                       {{ itemRoomPrice.room_type.name }}

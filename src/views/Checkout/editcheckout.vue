@@ -94,7 +94,7 @@
                 
              <div class="card">
                  <div class="card-body">
-                     <label for="" class="text-blue"><b>Data Facility</b></label>
+                  <label for="" class="text-blue"><b>Data Facility</b></label>
                     <div class="table-responsive py-4">
                         <table class="table table-flush">
                         <thead class="thead-light">

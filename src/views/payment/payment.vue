@@ -67,7 +67,7 @@
         <form @submit.prevent="sentImg()">
             <div class="card-body">
                 <label for="">coba gambar</label>
-                <input type="file" name="image" id="image" @change="upload" class="form-control" accept="image/*"> 
+                <input type="file" name="image" id="image" @change="upload" multiple class="form-control" accept="image/*"> 
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block">Submit</button>
@@ -97,7 +97,7 @@ export default {
   },
   data(){
       return{
-          img:''
+          img:[]
       }
   },
   mounted() {
@@ -105,14 +105,18 @@ export default {
   },
   methods: {
       upload(e){
-          this.img = e.target.files[0];
-          console.log(this.img);
-          
+        //   for (let index = 1; index < e.target.files.length; index++) {
+        //          this.img = e.target.files[index];
+        //   }
+
+          this.img = e.target.files;
+          console.log(this.img[0]);
       },
       async sentImg(){
           let fd = new FormData();
-          fd.append('image',this.img)
-
+          for (let index = 0; index < this.img.length; index++) {
+              fd.append('image[]',this.img[index])
+          }
           let response = await axios.post('api/booking/upload',fd);
           if (response === 200) {
               console.log('sukses');
@@ -130,5 +134,3 @@ export default {
 
 }
 </script>
-
-z

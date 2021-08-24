@@ -36,27 +36,27 @@
             <div class="form-group">
               <label for="">Name </label>
               <input type="text" class="form-control" v-model="name" />
-              <!-- <div v-if="validation.name" class="text-danger">
+              <div v-if="validation.name" class="text-danger">
                 {{ validation.name[0] }}
-              </div> -->
+              </div>
           </div>
           <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                   <label for="">Bed Type </label>
                   <input type="text" class="form-control" v-model="bed_type" />
-                  <!-- <div v-if="validation.bed_type" class="text-danger">
+                  <div v-if="validation.bed_type" class="text-danger">
                     {{ validation.bed_type[0] }}
-                  </div> -->
+                  </div>
               </div>
             </div>
             <div class="col-md-6">
                  <div class="form-group">
                     <label for="">Size </label>
                     <input type="text" class="form-control" v-model="size" />
-                    <!-- <div v-if="validation.size" class="text-danger">
+                    <div v-if="validation.size" class="text-danger">
                       {{ validation.size[0] }}
-                    </div> -->
+                    </div>
                 </div>
             </div>
           </div>
@@ -65,9 +65,9 @@
               <div class="form-group">
                 <label for="">Capacity </label>
                 <input type="number" class="form-control" v-model="capacity" />
-                <!-- <div v-if="validation.capacity" class="text-danger">
+                <div v-if="validation.capacity" class="text-danger">
                   {{ validation.capacity[0] }}
-                </div> -->
+                </div>
              </div>
             </div>
             <div class="col-md-6">
@@ -78,48 +78,46 @@
                     <option value="female">Female</option>
                     <option value="all">All</option>
                   </select>
-                  <!-- <div v-if="validation.gender" class="text-danger">
+                  <div v-if="validation.gender" class="text-danger">
                     {{ validation.gender[0] }}
-                  </div> -->
+                  </div>
               </div>
             </div>
           </div>
             <div class="form-group">
                   <label for="">Esktra Service </label>
-                    <div>
-                        <Multiselect    
-                        mode="tags"
-                        :loading="true"
-                        placeholder="Select your facility"
-                        :value="this.id"
-                        :options="this.tampung"
-                        :searchable="true"
-                        :multiplaceLabel="this.tampung"
-                        />
-                    </div>
-
-                  <!-- <div v-if="validation.gender" class="text-danger">
-                    {{ validation.gender[0] }}
-                  </div> -->
+                   <select name="" id="" class="form-control"  v-model="room_type_facility" multiple>
+                     <option selected >Choose your Faciliy</option>
+                     <option  v-for="(services,index) in service" :key="index" :value="services.id">{{services.name}}</option>
+                   </select>
+                  <div v-if="validation.room_type_facility" class="text-danger">
+                    {{ validation.room_type_facility[0] }}
+                  </div>
               </div>  
           <div class="form-group">
             <label for="">Notes</label>
             <textarea type="text" class="form-control" v-model="notes" />
-            <!-- <div v-if="validation.category" class="text-danger">
-              {{ validation.category[0] }}
-            </div> -->
+            <div v-if="validation.notes" class="text-danger">
+              {{ validation.notes[0] }}
+            </div>
           </div>
             </div>
             <div class="col-md-6">
              <div class="form-group">
                <label for="">Gallery</label>
-               <input type="file" v-on:change="previewFiles"  class="form-control">
+               <input type="file" name="galleries" id="galleries" @change="previewFiles"  class="form-control" multiple>
              </div>
             </div>
 
           </div>
           <div class="form-group">
-            <button class="btn btn-primary">Submit</button>
+            <button class="btn btn-primary d-flex align-items-center">
+              Submit
+               <template v-if="loading">
+                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="28px" height="28px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"> <g transform="rotate(0 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="-1.6081871345029237s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(30 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="-1.461988304093567s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(60 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="-1.3157894736842104s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(90 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="-1.1695906432748537s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(120 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="-1.023391812865497s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(150 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="-0.8771929824561403s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(180 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="-0.7309941520467835s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(210 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="-0.5847953216374269s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(240 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="-0.43859649122807015s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(270 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="-0.29239766081871343s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(300 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="-0.14619883040935672s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(330 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="0s" repeatCount="indefinite"></animate> </rect> </g> <!-- [ldio] generated by https://loading.io/ --></svg>
+              </template>
+            </button>
+            
           </div>
         </form>
       </div>
@@ -129,19 +127,19 @@
 </template>
 
 <script>
-
-import Multiselect from '@vueform/multiselect';
 import v_footer from "@/components/v_footer.vue";
 import navbar from "@/components/Navbar.vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
+import { createToast } from 'mosha-vue-toastify';
+import 'mosha-vue-toastify/dist/style.css'
 
 export default {
   name: "addRoomType",
   components: {
     v_footer,
-    navbar,
-    Multiselect
+    navbar
+    
   },
  data() {
    return{
@@ -151,13 +149,12 @@ export default {
           gender: '',
           size: '',
           room_type_facility :[],
-          galleries: null,
+          galleries: [],
           notes: '', 
-          option:['zudha','kediri'],
           router : useRouter(),
-          value: null,
-          tampung:[],
-          id:[],
+          service :[],
+          loading : false,
+          validation:[]
           
    }
 },
@@ -169,36 +166,51 @@ export default {
        let response = await axios.get('api/services/facility');
        if (response.status == 200) {
          this.service = response.data.data
-       }
 
-      for (let index = 0; index < this.service.length; index++) {
-         this.tampung[index] = this.service[index].name;
-         this.id[index] = this.service[index].id;
-      }
+         console.log(this.service);
+       }
      },
 
      previewFiles(event){
-        let dataPhoto = event.target.files[0];
+        let dataPhoto = event.target.files;
         this.galleries = dataPhoto;
-        console.log(this.galleries);
      },
      async store(){
-        
-        // let fd = new FormData();
-        // fd.append('name',this.name);
-        // fd.append('bed_type',this.bed_type);
-        // fd.append('capacity',this.capacity);
-        // fd.append('gender',this.gender);
-        // fd.append('size',this.size);
-        // fd.append('room_type_facility[]',this.room_type_facility);
-        // fd.append('galleries', this.galleries);
-        // fd.append('notes',this.notes);
+       this.loading = true;
+        let fd = new FormData();
+        try {
+            fd.append('name',this.name);
+            fd.append('bed_type',this.bed_type);
+            fd.append('capacity',this.capacity);
+            fd.append('gender',this.gender);
+            fd.append('size',this.size);
+            for (let index = 0; index < this.room_type_facility.length; index++) {
+              fd.append('room_type_facility[]',this.room_type_facility[index]); 
+            }
+            for (let index = 0; index < this.galleries.length; index++) {
+              fd.append('galleries[]',this.galleries[index])
+            }
+            fd.append('notes',this.notes);
 
-        console.log(this.id);
-      //  let response = await axios.post('api/roomtype/store',fd)
-      //  if (response.code == 200) {
-      //    console.log(response.data);
-      //  }
+           let response = await axios.post('api/roomtype/store',fd)
+           if (response.status == 200) {
+             this.loading = true;
+              this.router.push({
+                    name : 'roomtype'
+                })
+           }
+        } catch (e) {
+           this.validation = e.response.data.errors
+           createToast('Data Ada yang tidak valid',
+            {
+            type: 'danger',
+            showIcon: 'true',
+            transition: 'zoom',
+            })
+          
+        }
+        this.loading = false; 
+      
      },
      
    }

@@ -130,17 +130,17 @@ export default {
       this.loading =true ;
       try {
         let response = await axios.post('api/services/store',this.service);
-         createToast(response.data.message,
+         
+       if (response.status == 200) {
+        
+           this.loading = false;
+          createToast('data berhasil di tambahkan',
               {
               showIcon: 'true',
               position: 'top-right',
               type: 'success',
               transition: 'bounce',
               });
-       if (response.status == 200) {
-        
-           this.loading = false;
-         
            this.router.push({
                     name : 'service'
             })
