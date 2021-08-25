@@ -184,25 +184,6 @@ export default {
   components: {
     v_footer,
     navbar,
-  },
-//   setup() {
-//     let rooms = ref([]);
-
-//     onMounted(() => {
-//       // get data from api endpoint
-//       axios
-//         .get("api/room")
-//         .then((result) => {
-//           rooms.value = result.data;
-//         })
-//         .catch((err) => {
-//           console.log(err.response);
-//         });
-//     });
-
-//     return {
-//       rooms,
-//     };
-//   },
+  }
 };
 </script>

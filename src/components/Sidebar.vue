@@ -114,21 +114,24 @@
                 <div class="collapse" id="service">
                   <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
-                      <a href="Service/roomStatus/roomStatus.html" class="nav-link">
-                        <span class="sidenav-mini-icon">  </span>
-                        <span class="sidenav-normal"> Room Status</span>
+                      <a class="nav-link">
+                        <router-link to="/RoomStatus">
+                          <span class="nav-link-text text-default">Room Status</span>
+                        </router-link>
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="Service/lostFound/lostFound.html" class="nav-link">
-                        <span class="sidenav-mini-icon">  </span>
-                        <span class="sidenav-normal"> Lost & Found </span>
+                      <a class="nav-link">
+                        <router-link to="/LostFound">
+                          <span class="nav-link-text text-default">Lost & Found</span>
+                        </router-link>
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="Service/history.html" class="nav-link">
-                        <span class="sidenav-mini-icon">  </span>
-                        <span class="sidenav-normal"> History </span>
+                      <a class="nav-link">
+                        <router-link to="/History">
+                          <span class="nav-link-text text-default">History</span>
+                        </router-link>
                       </a>
                     </li>
                   </ul>
