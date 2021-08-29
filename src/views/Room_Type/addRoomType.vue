@@ -195,19 +195,25 @@ export default {
            let response = await axios.post('api/roomtype/store',fd)
            if (response.status == 200) {
              this.loading = true;
+              createToast('Data berhasil ditambahkan',
+                {
+                  type: 'success',
+                  showIcon: 'true',
+                  transition: 'zoom',
+                })
               this.router.push({
                     name : 'roomtype'
                 })
            }
         } catch (e) {
            this.validation = e.response.data.errors
+          
            createToast('Data Ada yang tidak valid',
             {
             type: 'danger',
             showIcon: 'true',
             transition: 'zoom',
             })
-          
         }
         this.loading = false; 
       

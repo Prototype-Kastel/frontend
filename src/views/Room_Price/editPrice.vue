@@ -107,8 +107,11 @@
                             {{validation.notes[0]}}
                         </div>
                     </div>       
-                    <div class="form-group">
-                        <button class="btn btn-primary " type="submit">Save</button>
+                    <div class="form-group ">
+                        <button class="btn btn-primary " type="submit">
+                          Save
+                          
+                        </button>
                     </div>
                 </form>
             </div>
@@ -126,6 +129,8 @@ import navbar from '@/components/Navbar.vue';
 import {reactive,ref,onMounted} from 'vue';
 import {useRouter,useRoute} from 'vue-router';
 import axios from 'axios';
+import { createToast } from 'mosha-vue-toastify';
+import 'mosha-vue-toastify/dist/style.css'
 
 export default {
   name: "addService",
@@ -146,6 +151,7 @@ export default {
          default:''
       });
 
+     
       const validation = ref([]);
 
       const roomtypes = ref([]);
@@ -180,15 +186,29 @@ export default {
     })
 
     function update() { 
+     
         axios.put(
             `api/roomprice/${route.params.id}/update`,
              roomprice
         )
         .then(() => {
+           createToast('Data berhasil ditambahkan',
+                {
+                    type: 'success',
+                    showIcon: 'true',
+                    transition: 'zoom',
+                })
+            
             router.push({
                 name : 'roomprice'
             })
         }).catch((err) => {
+           createToast('Data gagal ditambahkan',
+                {
+                    type: 'error',
+                    showIcon: 'true',
+                    transition: 'zoom',
+                })
             validation.value = err.response.data
         })
      }

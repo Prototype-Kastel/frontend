@@ -92,6 +92,16 @@ const routes = [
     component: () => import("@/views/payment/payment.vue")
   },
   {
+    path: '/payment/create',
+    name: 'payment.create',
+    component: () => import("@/views/payment/addPayment.vue")
+  },
+  {
+    path: '/payment/edit/:id',
+    name: 'payment.edit',
+    component: () => import("@/views/payment/editPayment.vue")
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting

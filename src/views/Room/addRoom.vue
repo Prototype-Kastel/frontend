@@ -53,13 +53,7 @@
             <label for="">Room Type </label>
             <select v-model="rooms.roomType_id" class="form-control">
               <option selected>Pilih Room Type</option>
-              <option
-                v-for="(roomType, index) in roomtypes.data"
-                :key="index"
-                :value="roomType.id"
-              >
-                {{ roomType.name }}
-              </option>
+              <option v-for="(roomType, index) in roomtypes.data" :key="index" :value="roomType.id" > {{ roomType.name }} </option>
             </select>
           </div>
           <div class="form-group">
@@ -94,8 +88,8 @@
             ></textarea>
           </div>
           <div>
-            <button type="submit" class="btn btn-primary btn-sm">Save</button>
-            <button type="reset" class="btn btn-neutral btn-sm">Reset</button>
+            <button type="submit" class="btn btn-primary "> Save </button>
+            <button type="reset" class="btn btn-neutral ">Reset</button>
           </div>
         </form>
       </div>
@@ -110,6 +104,8 @@ import navbar from "@/components/Navbar.vue";
 import { reactive, ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
+import { createToast } from 'mosha-vue-toastify';
+import 'mosha-vue-toastify/dist/style.css'
 
 export default {
   name: "addRoom",
@@ -150,6 +146,12 @@ export default {
       axios
         .post("api/room/store", rooms)
         .then(() => {
+        createToast('Data berhasil ditambahkan',
+            {
+              type: 'success',
+              showIcon: 'true',
+              transition: 'zoom',
+            })
           router.push({
             name: "room",
           });

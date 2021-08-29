@@ -65,7 +65,7 @@
                       {{ itemRoomPrice.name }}
                   </td>
                   <td>{{ itemRoomPrice.price_type }}</td>
-                  <td>{{ itemRoomPrice.price }}</td>
+                  <td>Rp.{{ new Intl.NumberFormat().format(itemRoomPrice.price ) }}</td>
                   <td>{{ itemRoomPrice.start_date }}</td>
                   <td>{{ itemRoomPrice.promo_code }}</td>
                   <td>

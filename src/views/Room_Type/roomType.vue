@@ -71,14 +71,8 @@
                   <td>{{ roomtype.capacity }}</td>
                   <td>{{ roomtype.size }}</td>
                   <td>
-                    <span 
-                      >  <!-- <span v-for="(roomitem,i) in roomtype.room" :key="i">
-                        <span v-if="(roomitem.room_status == 'Vacant Clean')">
-                            {{ count + 1 }}
-                        </span>
-                      </span> -->/{{ roomtype.room.length }}
-                    
-                    </span
+                    <span>  <!-- <span v-for="(roomitem,i) in roomtype.room" :key="i"> <span v-if="(roomitem.room_status == 'Vacant Clean')"> {{ count + 1 }} </span> </span> -->
+                    /{{ roomtype.room.length }} </span
                     >
                   </td>
                   <td>

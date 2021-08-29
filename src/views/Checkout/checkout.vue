@@ -91,8 +91,6 @@ export default {
   setup() {
       let bookings = ref([]);
       onMounted(() => {
-         
-
          axios.get('api/checkout')
         .then((result) => {
             bookings.value = result.data;

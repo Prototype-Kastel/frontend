@@ -49,7 +49,7 @@
                     <td>{{index + 1}}</td>
                     <td>{{service.name}}</td>
                     <td>{{service.category}}</td>
-                    <td>{{service.price}}</td>
+                    <td>{{new Intl.NumberFormat().format(service.price) }}</td>
                     <td>{{service.stock}}</td>
                     <td>
                         <router-link to="/service"><span class="btn btn-info btn-sm mr-1"><i class="fas fa-eye"></i></span></router-link>

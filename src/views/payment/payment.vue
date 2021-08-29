@@ -15,6 +15,11 @@
                           </ol>
                       </nav>
                       </div>
+                       <div class="col-lg-6 col-5 text-right">
+                          <a href="" class="btn btn-sm btn-neutral">
+                            <router-link to="/payment/create">Tambah Data</router-link>
+                          </a>
+                      </div>
                   </div>
                   </div>
               </div>
@@ -25,9 +30,9 @@
         <div class="card">
             <!-- Card header -->
             <div class="card-header">
-              <h3 class="mb-0">Datatable Checkout</h3>
+              <h3 class="mb-0">Datatable Payment</h3>
             </div>
-            <!-- <div class="table-responsive py-4">
+            <div class="table-responsive py-4">
               <table class="table table-flush" id="datatable-basic">
                 <thead class="thead-light">
                   <tr>
@@ -35,44 +40,31 @@
                     <th>No Booking</th>
                     <th>Nama Tamu </th>
                     <th>No Room </th>
+                    <th>Cost Less </th>
                     <th>Status</th>
                     <th>Action</th>  
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(booking,index) in bookings.data" :key="index">
+                  <tr v-for="(payments,index) in payment" :key="index">
                     <td>{{index + 1}}</td>
-                    <td>{{booking.no_booking}}</td>
-                    <td>{{booking.booking_customer[0].customer.name}}</td>
-                    <td>{{booking.no_booking}}</td>
-                    <td>{{booking.check_in}}</td>
-                    <td>{{booking.check_out}}</td>
-                    <td v-if="booking.check_out_at === null"><span class="badge badge-danger">Belum Check Out</span></td>
-                    <td v-else ><span class="badge badge-primary">{{booking.check_out_at}}</span></td>  
+                    <td>{{payments.booking.no_booking}}</td>
+                    <td>{{payments.booking.booking_customer[0].customer.name}}</td>
+                    <td>{{payments.booking.booking_detail[0].room.no_room}}</td> 
+                    <td>Rp.{{new Intl.NumberFormat().format(payments.booking.less_cost) }}</td> 
+                    <td v-if=" payments.payment_status == null && payments.attachment_payment == ''"><span class="badge badge-danger">Unpaid</span></td>
+                    <td v-else-if="payments.payment_status == null && payments.attachment_payment !== ''"><span class="badge badge-info">On Process</span></td>
+                    <td v-else-if="payments.payment_status == 'Cancelled'"><span class="badge badge-warning">Cancelled</span></td>
+                    <td v-else><span class="badge badge-primary">{{payments.payment_status}}</span></td>           
                     <td>
                         <router-link to="/service"><span class="btn btn-info btn-sm mr-1"><i class="fas fa-eye"></i></span></router-link>
-                        <template v-if="booking.check_out_at !== null">
-                            <button class="btn btn-success btn-sm mr-1" disabled><i class="fas fa-edit"></i></button>
-                        </template>
-                        <template v-else>
-                             <router-link :to="'/checkout/edit/'+ booking.id "><span class="btn btn-success btn-sm mr-1"><i class="fas fa-edit"></i></span></router-link>
-                        </template>
-                       
-                        
-                   </td>
+                        <router-link :to=" {name: 'payment.edit', params:{id:payments.id} } " ><span class="btn btn-success btn-sm mr-1"><i class="fas fa-edit"></i></span></router-link> 
+                        <button class="btn btn-danger btn-sm" @click.prevent="deletePayment(payments.id,index)"><i class="fas fa-trash"></i></button>
+                    </td>
                   </tr>     
                 </tbody>
               </table>
-            </div> --> 
-        <form @submit.prevent="sentImg()">
-            <div class="card-body">
-                <label for="">coba gambar</label>
-                <input type="file" name="image" id="image" @change="upload" multiple class="form-control" accept="image/*"> 
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block">Submit</button>
-            </div>
-        </form>
+            </div> 
           </div>  
         </div>
       </div> 
@@ -85,7 +77,7 @@ import v_footer from '@/components/v_footer.vue';
 import navbar from '@/components/Navbar.vue';
 import axios from 'axios';
 // import {ref,onMounted} from "vue";
-// import { createToast } from 'mosha-vue-toastify';
+ import { createToast } from 'mosha-vue-toastify';
 
 import 'mosha-vue-toastify/dist/style.css'   
 
@@ -97,36 +89,45 @@ export default {
   },
   data(){
       return{
-          img:[]
+          payment:[],
       }
   },
   mounted() {
-    //   this.getPayment();
+      this.getPayment();
   },
   methods: {
-      upload(e){
-        //   for (let index = 1; index < e.target.files.length; index++) {
-        //          this.img = e.target.files[index];
-        //   }
 
-          this.img = e.target.files;
-          console.log(this.img[0]);
-      },
-      async sentImg(){
-          let fd = new FormData();
-          for (let index = 0; index < this.img.length; index++) {
-              fd.append('image[]',this.img[index])
-          }
-          let response = await axios.post('api/booking/upload',fd);
-          if (response === 200) {
-              console.log('sukses');
-          }else{
+     async getPayment(){
+       let response = await axios.get('api/payment');
+       if (response.status == 200) {
+          this.payment = response.data.data
+          console.log(this.payment);
+       } else {
+         console.log("gagal fetch api");
+       }
+     },
+
+      deletePayment(id,index){
+        let response  = window.confirm('apakah anda yakin ?');
+        if (response == true) {
+            axios.delete(`api/payment/${id}/destroy`)
+            .then(() => {
+               createToast('data berhasil dihapus',
+                  {
+                  showIcon: 'true',
+                  position: 'top-right',
+                  type: 'success',
+                  transition: 'bounce',
+                  });
+                this.payment.splice(index,1);
+              
+            }).catch(() => {
               console.log('gagal');
-          }
-      }
-
-
-     
+            });
+        } else {
+           this.addToastFailed();
+        }  
+       },
   },
 
   
