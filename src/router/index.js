@@ -4,6 +4,17 @@ import Room from '../views/Room/Room.vue';
 import RoomType from '../views/Room_Type/roomType.vue';
 import roomprice from '../views/Room_Price/roomPrice.vue';
 import Service from '../views/Service/service.vue';
+import Booking from '../views/Booking/Booking.vue';
+import addBooking from '../views/Booking/addBooking.vue';
+import editBooking from '../views/Booking/editBooking.vue';
+import LostFound from '../views/Lost_Found/LostFound.vue';
+import addLostFound from '../views/Lost_Found/addLostFound.vue';
+import editLostFound from '../views/Lost_Found/editLostFound.vue';
+import History from '../views/History/history.vue';
+import RoomStatus from '../views/Room_Status/RoomStatus.vue';
+import addRoomStatus from '../views/Room_Status/addRoomStatus.vue';
+import editRoomStatus from '../views/Room_Status/editRoomStatus.vue';
+
 
 const routes = [
   {
@@ -101,6 +112,66 @@ const routes = [
     name: 'payment.edit',
     component: () => import("@/views/payment/editPayment.vue")
   },
+  {
+    path: '/Booking',
+    name: 'Booking',
+    component: Booking
+  },
+  {
+    path: '/Booking/addBooking',
+    name: 'addBooking',
+    component: addBooking
+  },
+  {
+    path: '/Booking/editBooking',
+    name: 'editBooking',
+    component: editBooking
+  },
+  {
+    path: '/LostFound',
+    name: 'LostFound',
+    component: LostFound
+  },
+  {
+    path: '/LostFound/addLostFound',
+    name: 'addLostFound',
+    component: addLostFound
+  },
+  {
+    path: '/LostFound/editLostFound',
+    name: 'editLostFound',
+    component: editLostFound
+  },
+  {
+    path: '/History',
+    name: 'history',
+    component: History
+  },
+  {
+    path: '/RoomStatus',
+    name: 'RoomStatus',
+    component: RoomStatus
+  },
+  {
+    path: '/RoomStatus/addRoomStatus',
+    name: 'addRoomStatus',
+    component: addRoomStatus
+  },
+  {
+    path: '/RoomStatus/editRoomStatus',
+    name: 'editRoomStatus',
+    component: editRoomStatus
+  },
+  // {
+  //   path: '/checkin',
+  //   name: 'ChenkIn',
+  //   component: ChenkIn
+  // },
+  // {
+  //   path: '/checkout',
+  //   name: 'Checkout',
+  //   component: Checkout
+  // },
   {
     path: '/about',
     name: 'About',
