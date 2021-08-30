@@ -7,10 +7,7 @@
         <div class="row align-items-center py-4">
           <div class="col-lg-6 col-7">
             <h6 class="h2 text-white d-inline-block mb-0">Booking</h6>
-            <nav
-              aria-label="breadcrumb"
-              class="d-none d-md-inline-block ml-md-4"
-            >
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4" >
               <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                 <li class="breadcrumb-item">
                   <a href="datatables.html#"><i class="fas fa-home"></i></a>
@@ -39,7 +36,7 @@
         <div class="card">
           <!-- Card header -->
           <div class="card-header">
-            <h3 class="mb-0">Booking</h3>
+            <h3 class="mb-0">Datatable Booking</h3>
           </div>
           <div class="table-responsive py-4">
             <table class="table table-flush" id="datatable-basic">
@@ -58,68 +55,18 @@
 
               <tbody>
                 
-                <tr>
-                  <td>3</td>
-                  <td>000015</td>
-                  <td>Tanwirul Adam</td>
-                  <td>Yudha Bachtiar</td>
-                  <td>31 Mei 2021</td>
-                  <td>08 Juni 2021</td>
-                  <td><span class="badge badge-primary">Paid</span></td>
-                  <td>
-                    <button
-                      type="button"
-                      class="btn btn-info btn-sm"
-                      data-toggle="modal"
-                      data-target="#exampleModal"
-                    >
-                      <i class="fas fa-eye"></i>
-                    </button>
-                    <router-link to="/Booking/editBooking" class="mr-2">
-                        <a class="btn btn-success btn-sm">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                    </router-link>
-                    
-                    <button
-                      class="btn btn-danger btn-sm"
-                      data-toggle="sweet-alert"
-                      data-sweet-alert="confirm"
-                    >
-                      <i class="fas fa-trash"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>000015</td>
-                  <td>Muhammad Qulub</td>
-                  <td>Yudha Bachtiar</td>
-                  <td>31 Mei 2021</td>
-                  <td>08 Juni 2021</td>
-                  <td><span class="badge badge-warning">Cancelled</span></td>
-                  <td>
-                    <button
-                      type="button"
-                      class="btn btn-info btn-sm"
-                      data-toggle="modal"
-                      data-target="#exampleModal"
-                    >
-                      <i class="fas fa-eye"></i>
-                    </button>
-                    <router-link to="/Booking/editBooking" class="mr-2">
-                        <a class="btn btn-success btn-sm">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                    </router-link>
-                    <button
-                      class="btn btn-danger btn-sm"
-                      data-toggle="sweet-alert"
-                      data-sweet-alert="confirm"
-                    >
-                      <i class="fas fa-trash"></i>
-                    </button>
-                  </td>
+                <tr v-for="(bookings,index) in booking" :key="index">
+                  <td>{{index + 1}}</td>
+                  <td>{{bookings.no_booking}}</td>
+                  <td>{{bookings.booking_customer[0].customer.name}}</td>
+                  <td>{{bookings.booking_customer[0].customer.name}}</td>
+                  <td>{{bookings.check_in}}</td>
+                  <td>{{bookings.check_out}}</td>
+                   <td>
+                       <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-eye"></i></button>
+                      <!-- <router-link :to=" {name: 'room.edit', params:{id:itemRoom.id} } "><span class="btn btn-success btn-sm mr-1"><i class="fas fa-edit"></i></span></router-link> -->
+                       <button class="btn btn-danger btn-sm" @click.prevent="destroy(bookings.id,index)"><i class="fas fa-trash"></i></button>
+                    </td>
                 </tr>
               </tbody>
             </table>
@@ -135,32 +82,35 @@
 <script>
 import v_footer from "@/components/v_footer.vue";
 import navbar from "@/components/Navbar.vue";
-// import axios from "axios";
-// import { onMounted, ref } from "vue";
+import axios from "axios";
+// import { createToast } from 'mosha-vue-toastify';
+import 'mosha-vue-toastify/dist/style.css' 
 export default {
   name: "Booking",
   components: {
     v_footer,
     navbar,
   },
-//   setup() {
-//     let rooms = ref([]);
+  data(){
+    return{
+      booking:[]
+    }
+  },
+  mounted() {
+    this.getBooking();
+  },
+  methods:{
+    async getBooking(){
+      let response = await axios.get('api/booking');
+      if (response.status ==200) {
+        this.booking = response.data.data;
+        console.log(this.booking)
+      } else {
+        console.log('error');
+      }
+    }
 
-//     onMounted(() => {
-//       // get data from api endpoint
-//       axios
-//         .get("api/room")
-//         .then((result) => {
-//           rooms.value = result.data;
-//         })
-//         .catch((err) => {
-//           console.log(err.response);
-//         });
-//     });
+  }
 
-//     return {
-//       rooms,
-//     };
-//   },
 };
 </script>

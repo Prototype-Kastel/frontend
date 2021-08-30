@@ -73,12 +73,12 @@
           </div>  
         </div>
       </div>
-    </div>
-    <v_footer />
-  </div>
+    <v_footer/>
+   </div>
 </template>
 
 <script>
+
 import v_footer from "@/components/v_footer.vue";
 import navbar from "@/components/Navbar.vue";
 import axios from "axios";
@@ -133,7 +133,6 @@ export default {
               });
         }  
     }
-
     return {
       rooms,
       destroy

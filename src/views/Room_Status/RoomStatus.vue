@@ -7,10 +7,7 @@
         <div class="row align-items-center py-4">
           <div class="col-lg-6 col-7">
             <h6 class="h2 text-white d-inline-block mb-0">Room Status</h6>
-            <nav
-              aria-label="breadcrumb"
-              class="d-none d-md-inline-block ml-md-4"
-            >
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4" >
               <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                 <li class="breadcrumb-item">
                   <a href="datatables.html#"><i class="fas fa-home"></i></a>
@@ -46,76 +43,30 @@
               <thead class="thead-light">
                 <tr>
                   <th>No</th>
-                  <th>Name Room</th>
+                  <th>No Room</th>
                   <th>Type Room</th>
                   <th>Floor</th>
-                  <th>Tanggal</th>
+                  <th>Tanggal Update</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
               </thead>
 
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Bougenfil indah</td>
-                  <td>Medium</td>
-                  <td>3</td>
-                  <td>31 Mei 2021</td>
-                  <td><span class="badge badge-primary">Occupied</span></td>
+                <tr v-for="(rooms,index) in room" :key="index">
+                  <td>{{index + 1}}</td>
+                  <td>{{rooms.no_room}}</td>
+                  <td>{{rooms.room_type.name}}</td>
+                  <td>{{rooms.floor}}</td>
+                  <td>{{rooms.updated_at}}</td>
+                  <td>{{rooms.room_status}}</td>
                   <td>
-                    <button
-                      type="button"
-                      class="btn btn-info btn-sm"
-                      data-toggle="modal"
-                      data-target="#exampleModal"
-                    >
-                      <i class="fas fa-eye"></i>
-                    </button>
-                    <router-link to="/RoomStatus/editRoomStatus" class="mr-2 text-white">
-                        <a class="btn btn-success btn-sm">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                    </router-link>
-                    <button
-                      class="btn btn-danger btn-sm"
-                      data-toggle="sweet-alert"
-                      data-sweet-alert="confirm"
-                    >
-                      <i class="fas fa-trash"></i>
-                    </button>
+                    <router-link to="/roomstatus"><span class="btn btn-info btn-sm mr-1"><i class="fas fa-eye"></i></span></router-link>
+                    <router-link :to=" {name: 'roomstatus.edit', params:{id:rooms.id} } "><span class="btn btn-success btn-sm mr-1"><i class="fas fa-edit"></i></span></router-link>
+                    <button class="btn btn-danger btn-sm" @click.prevent=""><i class="fas fa-trash"></i></button>
                   </td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Bougenfil Indah</td>
-                  <td>Large</td>
-                  <td>2</td>
-                  <td>31 Mei 2021</td>
-                  <td><span class="badge badge-danger">Out Of Order</span></td>
-                  <td>
-                    <button
-                      type="button"
-                      class="btn btn-info btn-sm"
-                      data-toggle="modal"
-                      data-target="#exampleModal"
-                    >
-                      <i class="fas fa-eye"></i>
-                    </button>
-                    <router-link to="/RoomStatus/editRoomStatus" class="mr-2 text-white">
-                        <a class="btn btn-success btn-sm">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                    </router-link>
-                    <button
-                      class="btn btn-danger btn-sm"
-                      data-toggle="sweet-alert"
-                      data-sweet-alert="confirm"
-                    >
-                      <i class="fas fa-trash"></i>
-                    </button>
-                  </td>
-                </tr>
+               
               </tbody>
             </table>
           </div>
@@ -130,7 +81,7 @@
 <script>
 import v_footer from "@/components/v_footer.vue";
 import navbar from "@/components/Navbar.vue";
-// import axios from "axios";
+import axios from "axios";
 // import { onMounted, ref } from "vue";
 export default {
   name: "RoomStatus",
@@ -138,24 +89,23 @@ export default {
     v_footer,
     navbar,
   },
-  //   setup() {
-  //     let rooms = ref([]);
-
-  //     onMounted(() => {
-  //       // get data from api endpoint
-  //       axios
-  //         .get("api/room")
-  //         .then((result) => {
-  //           rooms.value = result.data;
-  //         })
-  //         .catch((err) => {
-  //           console.log(err.response);
-  //         });
-  //     });
-
-  //     return {
-  //       rooms,
-  //     };
-  //   },
+ data(){
+   return{
+     room:[],
+   }
+ },
+ mounted() {
+   this.getRoom();
+ },
+ methods: {
+   async getRoom(){
+     let response = await axios.get('api/room')
+     if (response.status == 200) {
+        this.room = response.data.data
+     } else {
+       console.log('gagal');
+     }
+   }
+ },
 };
 </script>

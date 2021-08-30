@@ -158,8 +158,8 @@ const routes = [
     component: addRoomStatus
   },
   {
-    path: '/RoomStatus/editRoomStatus',
-    name: 'editRoomStatus',
+    path: '/RoomStatus/edit/:id',
+    name: 'roomstatus.edit',
     component: editRoomStatus
   },
   // {
