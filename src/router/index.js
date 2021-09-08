@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import HomeAdmin from '../views/HomeAdmin.vue'
 import Room from '../views/Room/Room.vue';
 import RoomType from '../views/Room_Type/roomType.vue';
 import roomprice from '../views/Room_Price/roomPrice.vue';
@@ -14,6 +15,10 @@ import History from '../views/History/history.vue';
 import RoomStatus from '../views/Room_Status/RoomStatus.vue';
 import addRoomStatus from '../views/Room_Status/addRoomStatus.vue';
 import editRoomStatus from '../views/Room_Status/editRoomStatus.vue';
+import Customer from '../views/Customer/Customer.vue';
+import addCustomer from '../views/Customer/addCustomer.vue';
+import editCustomer from '../views/Customer/editCustomer.vue';
+
 
 
 const routes = [
@@ -21,6 +26,11 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/Admin',
+    name: 'HomeAdmin',
+    component: HomeAdmin
   },
   {
     path: '/room',
@@ -131,6 +141,21 @@ const routes = [
     path: '/RoomStatus/editRoomStatus',
     name: 'editRoomStatus',
     component: editRoomStatus
+  },
+  {
+    path: '/Customer',
+    name: 'Customer',
+    component: Customer
+  },
+  {
+    path: '/Customer/addCustomer',
+    name: 'addCustomer',
+    component: addCustomer
+  },
+  {
+    path: '/Customer/editCustomer',
+    name: 'editCustomer',
+    component: editCustomer
   },
   // {
   //   path: '/checkin',

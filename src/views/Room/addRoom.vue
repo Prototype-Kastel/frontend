@@ -1,5 +1,7 @@
-<template>
-  <div class="header bg-primary pb-6">
+ <template>
+  <sidebar />
+  <div class="main-content mt-10" id="panel">
+    <div class="header bg-primary pb-6">
     <!-- for navbar -->
     <navbar />
     <div class="container-fluid">
@@ -101,12 +103,14 @@
       </div>
     </div>
     <v_footer />
+    </div>
   </div>
 </template>
 
 <script>
 import v_footer from "@/components/v_footer.vue";
 import navbar from "@/components/Navbar.vue";
+import sidebar from "@/components/Sidebar.vue";
 import { reactive, ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
@@ -114,6 +118,7 @@ import axios from "axios";
 export default {
   name: "addRoom",
   components: {
+    sidebar,
     v_footer,
     navbar,
   },
