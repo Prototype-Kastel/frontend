@@ -19,6 +19,10 @@ import Customer from '../views/Customer/Customer.vue';
 import addCustomer from '../views/Customer/addCustomer.vue';
 import editCustomer from '../views/Customer/editCustomer.vue';
 
+// Customer View
+
+import CustomerDetailPesanan from '../views/CustomerView/Detail_Pesanan/Detail_Pesanan.vue';
+import CustomerRoomDetails from '../views/CustomerView/Room_Details/Room_Details.vue';
 
 
 const routes = [
@@ -174,9 +178,23 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+  },
 
+
+// CUSTOMER VIEW
+
+  {
+    path: '/customer/detailPesanan',
+    name: 'customer.detailpesanan',
+    component: CustomerDetailPesanan
+  },
+  {
+    path: '/customer/roomDetails',
+    name: 'customer.roomdetails',
+    component: CustomerRoomDetails
+  },
+
+]
 const router = createRouter({
   history: createWebHashHistory(),
   routes
