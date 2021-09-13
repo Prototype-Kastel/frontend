@@ -36,13 +36,7 @@
               <div class="form-group">
                 <label for="">Room Type </label>
                 <select v-model="rooms.roomType_id" class="form-control">
-                  <option
-                    v-for="(roomType, index) in roomtypes.data"
-                    :key="index"
-                    :value="roomType.id"
-                  >
-                    {{ roomType.name }}
-                  </option>
+                  <option v-for="(roomType, index) in roomtypes.data" :key="index" :value="roomType.id" > {{ roomType.name }} </option>
                 </select>
               </div>
               <div class="form-group">
@@ -53,10 +47,10 @@
                 <label for="">Room Status</label>
                 <select v-model="rooms.room_status" class="form-control">
                   <option :value="rooms.room_status">{{rooms.room_status}}</option>
-                  <option value="Vacant_Dirty">Vacant Dirty</option>
-                  <option value="Vacant_Clean">Vacant Clean</option>
+                  <option value="Vacant Dirty">Vacant Dirty</option>
+                  <option value="Vacant Clean">Vacant Clean</option>
                   <option value="Occupied">Occupied</option>
-                  <option value="Lost_of_Order">Lost Of Order</option>
+                  <option value="Out Of Order">Lost Of Order</option>
                 </select>
               </div>
               <div class="form-group">
@@ -68,14 +62,7 @@
               </div>
               <div class="form-group">
                 <label for="">Notes</label>
-                <textarea
-                  name=""
-                  class="form-control"
-                  id=""
-                  cols="30"
-                  rows="5"
-                  v-model="rooms.notes"
-                ></textarea>
+                <textarea name="" class="form-control" id="" cols="30" rows="5" v-model="rooms.notes" ></textarea>
               </div>
               <div>
                 <button type="submit" class="btn btn-primary btn-sm">Save</button>
@@ -135,6 +122,7 @@ setup() {
                 rooms.no_room = result.data.data.no_room
                 rooms.roomType_id = result.data.data.roomType_id
                 rooms.floor = result.data.data.floor
+                rooms.smooking_area = result.data.data.smooking_area
                 rooms.room_status = result.data.data.room_status
                 rooms.notes = result.data.data.notes
             }).catch((err) => {

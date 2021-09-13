@@ -7,10 +7,7 @@
         <div class="row align-items-center py-4">
           <div class="col-lg-6 col-7">
             <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
-            <nav
-              aria-label="breadcrumb"
-              class="d-none d-md-inline-block ml-md-4"
-            >
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4" >
               <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                 <li class="breadcrumb-item">
                   <a href="dashboard.html#"><i class="fas fa-home"></i></a>
@@ -58,12 +55,7 @@
                 <tr v-for="(roomtype,index) in roomtypes.data" :key="index" >
                   <td>{{ index+1 }}</td>
                   <td>
-                    <button
-                      type="button"
-                      class="btn btn-info btn-sm"
-                      data-toggle="modal"
-                      data-target="#price"
-                    >
+                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#price" >
                       {{ roomtype.name }}
                     </button>
                   </td>

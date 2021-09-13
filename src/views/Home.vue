@@ -1,6 +1,5 @@
 <template>
-  <sidebar/>
-   <div class="main-content mt-10" id="panel">
+
   <div class="header bg-primary pb-6">
     <!-- for navbar -->
     <navbar />
@@ -174,13 +173,11 @@
 
     <v_footer />
   </div>
-  </div>
 </template>
 
 <script>
 import v_footer from "@/components/v_footer.vue";
 import navbar from "@/components/Navbar.vue";
-import sidebar from "@/components/Sidebar.vue";
 // import axios from "axios";
 // import { onMounted, ref } from "vue";
 export default {
@@ -188,7 +185,6 @@ export default {
   components: {
     v_footer,
     navbar,
-    sidebar
   }
 };
 </script>

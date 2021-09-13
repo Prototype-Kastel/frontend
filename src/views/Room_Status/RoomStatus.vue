@@ -59,7 +59,10 @@
                   <td>{{rooms.room_type.name}}</td>
                   <td>{{rooms.floor}}</td>
                   <td>{{rooms.updated_at}}</td>
-                  <td>{{rooms.room_status}}</td>
+                  <td v-if="rooms.room_status == 'Vacant Clean'"> <span class="badge badge-primary">{{rooms.room_status}}</span></td>
+                  <td v-else-if="rooms.room_status == 'Occupied'"> <span class="badge badge-info">{{rooms.room_status}}</span></td>
+                  <td v-else-if="rooms.room_status == 'Vacant Dirty'"> <span class="badge badge-warning">{{rooms.room_status}}</span></td>
+                  <td v-else-if="rooms.room_status == 'Out Of Order'"> <span class="badge badge-danger">{{rooms.room_status}}</span></td>
                   <td>
                     <router-link to="/roomstatus"><span class="btn btn-info btn-sm mr-1"><i class="fas fa-eye"></i></span></router-link>
                     <router-link :to=" {name: 'roomstatus.edit', params:{id:rooms.id} } "><span class="btn btn-success btn-sm mr-1"><i class="fas fa-edit"></i></span></router-link>
@@ -83,6 +86,7 @@ import v_footer from "@/components/v_footer.vue";
 import navbar from "@/components/Navbar.vue";
 import axios from "axios";
 // import { onMounted, ref } from "vue";
+
 export default {
   name: "RoomStatus",
   components: {

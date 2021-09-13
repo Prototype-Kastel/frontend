@@ -7,10 +7,7 @@
         <div class="row align-items-center py-4">
           <div class="col-lg-6 col-7">
             <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
-            <nav
-              aria-label="breadcrumb"
-              class="d-none d-md-inline-block ml-md-4"
-            >
+            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4" >
               <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                 <li class="breadcrumb-item">
                   <a href="dashboard.html#"><i class="fas fa-home"></i></a>
@@ -47,7 +44,7 @@
           <!-- Form groups used in grid -->
           <div class="form-group">
             <label for="">No Room</label>
-            <input type="text" class="form-control" v-model="rooms.no_room" />
+            <input type="number" class="form-control" v-model="rooms.no_room" />
           </div>
           <div class="form-group">
             <label for="">Room Type </label>
@@ -63,10 +60,10 @@
           <div class="form-group">
             <label for="">Room Status</label>
             <select v-model="rooms.room_status" class="form-control">
-              <option value="Vacant_Dirty">Vacant Dirty</option>
-              <option value="Vacant_Clean">Vacant Clean</option>
+              <option value="Vacant Dirty">Vacant Dirty</option>
+              <option value="Vacant Clean">Vacant Clean</option>
               <option value="Occupied">Occupied</option>
-              <option value="Lost_of_Order">Lost Of Order</option>
+              <option value="Out Of Order">Lost Of Order</option>
             </select>
           </div>
           <div class="form-group">

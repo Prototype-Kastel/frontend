@@ -82,11 +82,6 @@ const routes = [
     name: 'service.edit',
     component: () => import("@/views/Service/editService.vue")
   },
-  // {
-  //   path: '/booking',
-  //   name: 'Booking',
-  //   component: Booking
-  // },
   {
     path: '/checkout',
     name: 'checkout',
@@ -114,7 +109,7 @@ const routes = [
   },
   {
     path: '/Booking',
-    name: 'Booking',
+    name: 'booking',
     component: Booking
   },
   {
@@ -123,8 +118,23 @@ const routes = [
     component: addBooking
   },
   {
-    path: '/Booking/editBooking',
-    name: 'editBooking',
+    path: '/Booking/editBooking/:id',
+    name: 'booking.edit',
+    component: editBooking
+  },
+  {
+    path: '/Booking/editBooking/:id/addbookingRoom',
+    name: 'booking.addbookingroom',
+    component: () => import("@/views/Booking/addbookingRoom.vue")
+  },
+  {
+    path: '/Booking/editBooking/:id/addbookingcustomer',
+    name: 'booking.addbookingCustomer',
+    component: () => import("@/views/Booking/addbookingCustomer.vue")
+  },
+  {
+    path: '/Booking/editBooking/:id',
+    name: 'booking.edit',
     component: editBooking
   },
   {
@@ -138,8 +148,8 @@ const routes = [
     component: addLostFound
   },
   {
-    path: '/LostFound/editLostFound',
-    name: 'editLostFound',
+    path: '/LostFound/editLostFound/:id',
+    name: 'lostfound.edit',
     component: editLostFound
   },
   {
@@ -149,12 +159,12 @@ const routes = [
   },
   {
     path: '/RoomStatus',
-    name: 'RoomStatus',
+    name: 'roomstatus',
     component: RoomStatus
   },
   {
     path: '/RoomStatus/addRoomStatus',
-    name: 'addRoomStatus',
+    name: 'roomstatus.create',
     component: addRoomStatus
   },
   {
@@ -162,16 +172,6 @@ const routes = [
     name: 'roomstatus.edit',
     component: editRoomStatus
   },
-  // {
-  //   path: '/checkin',
-  //   name: 'ChenkIn',
-  //   component: ChenkIn
-  // },
-  // {
-  //   path: '/checkout',
-  //   name: 'Checkout',
-  //   component: Checkout
-  // },
   {
     path: '/about',
     name: 'About',

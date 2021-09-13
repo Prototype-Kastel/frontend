@@ -155,6 +155,8 @@
         </div> 
         <v_footer/>
       </div>
+
+    
    
 </template>
 
@@ -180,6 +182,7 @@ export default {
           loading:false,
           status_payment:'',
           router : useRouter(),
+          
       }
   },
   mounted(){

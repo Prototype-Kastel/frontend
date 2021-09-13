@@ -198,6 +198,10 @@ export default {
   mounted(){
       this.getBooking();
   },
+  updated(){
+      console.log(this.payment.payment_type);
+  },
+
   methods: {
      async getBooking(){
        let response = await axios.get('api/booking');
@@ -268,3 +272,6 @@ export default {
   },
 }
 </script>
+
+
+

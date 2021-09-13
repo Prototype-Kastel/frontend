@@ -56,15 +56,18 @@
               <tbody>
                 
                 <tr v-for="(bookings,index) in booking" :key="index">
-                  <td>{{index + 1}}</td>
+                  <td>{{ index + 1}}</td>
                   <td>{{bookings.no_booking}}</td>
                   <td>{{bookings.booking_customer[0].customer.name}}</td>
                   <td>{{bookings.booking_customer[0].customer.name}}</td>
                   <td>{{bookings.check_in}}</td>
                   <td>{{bookings.check_out}}</td>
+                  <td v-if="bookings.booking_payment[0].payment_status == null"><span class="badge badge-warning">Unpaid</span></td>
+                  <td v-if="bookings.booking_payment[0].payment_status !== null && bookings.booking_payment[0].attachment_payment == null"><span class="badge badge-info">On Process</span></td>
+                  <td v-if="bookings.booking_payment[0].payment_status !== null  && bookings.booking_payment[0].attachment_payment !== null"><span class="badge badge-primary">{{bookings.booking_payment[0].payment_status}}</span></td>
                    <td>
                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-eye"></i></button>
-                      <!-- <router-link :to=" {name: 'room.edit', params:{id:itemRoom.id} } "><span class="btn btn-success btn-sm mr-1"><i class="fas fa-edit"></i></span></router-link> -->
+                      <router-link :to=" {name: 'booking.edit', params:{id:bookings.id} } "><span class="btn btn-success btn-sm mr-1"><i class="fas fa-edit"></i></span></router-link> 
                        <button class="btn btn-danger btn-sm" @click.prevent="destroy(bookings.id,index)"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>

@@ -184,6 +184,7 @@ export default {
             fd.append('capacity',this.capacity);
             fd.append('gender',this.gender);
             fd.append('size',this.size);
+            
             for (let index = 0; index < this.room_type_facility.length; index++) {
               fd.append('room_type_facility[]',this.room_type_facility[index]); 
             }

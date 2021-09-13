@@ -152,7 +152,6 @@
             </div>
             <div class="col-md-6">
               <div class="card">
-                <div class="card-header">Gallery</div>
                 <div class="card-body">
                     <form @submit.prevent="uploadImg()">
                       <div class="form-group">
@@ -278,19 +277,15 @@ export default {
      async addService(){
         let fd = new FormData();
         fd.append('service_id',this.itemService.id);
-       try {
-           let response = await axios.post(`api/roomtype/addservice/${this.$route.params.id}`,fd);    
-           
-           if (response.status == 200) {
+        let response = await axios.post(`api/roomtype/addservice/${this.$route.params.id}`,fd);    
+         if (response.status == 200) {
               this.itemService.id = "";
-              this.addToastScuccess();
+              this.addToastSuccess();
               
            } else {
-             console.log('gagal');
+             this.addToastFailed();
            }
-       } catch (error) {
-         this.addToastFailed();
-       }
+       
 
     },
       addToastFailed(){

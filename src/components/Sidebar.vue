@@ -29,7 +29,6 @@
                       <span class="nav-link-text text-default">Dashboards</span>
                      </router-link>
                 </a>
-             
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#booking" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="booking">
