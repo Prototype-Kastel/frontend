@@ -13,6 +13,7 @@
               <h3 class="mb-0">Edit Data Booking</h3>
             </div>
             <div class="card-body">
+           
               <div class="row">
                 <div class="col-md-6">
                   <div class="card">
@@ -95,9 +96,13 @@
                     <div class="card">
                       <div class="card-header">Data ID Card</div>
                       <div class="card-body">
+                        <form @submit.prevent="editBooking()">
                         <div class="form-group">
                            <label for="">ID Card Type</label>
-                           <input type="text" class="form-control" v-model="booking.idcard_type">
+                           <select v-model="booking.idcard_type"  class="form-control">
+                             <option value="KTP">KTP</option>
+                             <option value="SIM">SIM</option>
+                           </select>
                         </div>
                          <div class="form-group">
                            <label for="">ID Card Number</label>
@@ -105,8 +110,19 @@
                         </div>
                          <div class="form-group">
                            <label for="">ID Card Photo</label> <br>
-                           <img :src="booking.idcard_photo" style="width:100px;height:100px" alt="">
+                           <img :src="booking.idcard_photo" style="width:100px;height:100px" alt="">  <br>
+                           <input type="file" class="form-control" @change="previewPhoto">
                         </div>
+                         <div class=" form-group d-flex align-items-center ">
+                            <button type="submit" class="btn btn-primary d-flex align-items-center ">
+                              Save
+                              <template v-if="loading">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="28px" height="28px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"> <g transform="rotate(0 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="-1.6081871345029237s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(30 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="-1.461988304093567s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(60 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="-1.3157894736842104s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(90 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="-1.1695906432748537s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(120 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="-1.023391812865497s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(150 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="-0.8771929824561403s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(180 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="-0.7309941520467835s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(210 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="-0.5847953216374269s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(240 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="-0.43859649122807015s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(270 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="-0.29239766081871343s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(300 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="-0.14619883040935672s" repeatCount="indefinite"></animate> </rect> </g><g transform="rotate(330 50 50)"> <rect x="47" y="24" rx="3" ry="6" width="6" height="12" fill="#cee8ed"> <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.7543859649122806s" begin="0s" repeatCount="indefinite"></animate> </rect> </g> <!-- [ldio] generated by https://loading.io/ --></svg>
+                              </template>
+                            </button>
+                            <button class="btn btn-neutral">Reset</button>
+                          </div>     
+                        </form>
                       </div>
                     </div>
               
@@ -204,10 +220,8 @@
                       </div>
                   </div>
               </div>
-              <div>
-                <button class="btn btn-primary ">Save</button>
-                <button class="btn btn-neutral">Reset</button>
-              </div>
+               
+              
             </div>
           </div>
 
@@ -224,6 +238,7 @@
 import v_footer from "@/components/v_footer.vue";
 import navbar from "@/components/Navbar.vue";
 import axios from "axios";
+import { useRouter } from "vue-router";
 import { createToast } from 'mosha-vue-toastify';
 import 'mosha-vue-toastify/dist/style.css'
 
@@ -253,7 +268,10 @@ export default {
         customer:[],
         room:[],
         service:[]
-      }
+      },
+      loading :false,
+      router:useRouter(),
+      idcard:''
     }
   },
   mounted() {
@@ -334,8 +352,10 @@ export default {
                     transition: 'bounce',
                   });
 
+                 this.router.push({
+                    name : 'booking'
+              })
                 this.booking.customer.splice(index,1);
-              
             }).catch(() => {
               console.log('gagal');
             });
@@ -347,11 +367,48 @@ export default {
                   type: 'error',
                   transition: 'bounce',
                   });
-        }  
-       }
+          }  
+       },
+       previewPhoto(e){
+         this.idcard = e.target.files[0];
+         console.log(this.idcard);
+       },
+       async editBooking(){
+        this.loading = true;
+        let fd = new FormData();
+        fd.append('idcard_type',this.booking.idcard_type);
+        fd.append('idcard_number',this.booking.idcard_number);
+        fd.append('idcard_photo',this.idcard);
+
+        try {
+          let response = await axios.put(`api/booking/${this.$route.params.id}/edit`,fd);
+          if(response.status == 200){
+            this.loading = false;
+              createToast('data berhasil dihapus',
+                    {
+                      showIcon: 'true',
+                      position: 'top-right',
+                      type: 'success',
+                      transition: 'bounce',
+                    });
+                  this.router.push({
+                      name : 'booking'
+                })
+                
+          }else{
+            this.loading = false;
+            console.log("gagal");
+          }
+        } catch (error) {
+          this.loading = false;
+          console.log("gagal");
+        }
+        
+       },
     
   },
 
 };
 </script>
+
 
