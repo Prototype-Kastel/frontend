@@ -36,7 +36,7 @@
         <div class="col-12 col-sm">
           <div class="select-option">
             <label for="location">Location:</label>
-            <select id="location">
+            <select id="location" class="form-control">
               <option value="">Lb.Bulus Jakarta</option>
               <option value="">Pamulang Tang-SeL</option>
             </select>
@@ -45,7 +45,7 @@
         <div class="col-12 col-sm">
           <div class="select-option">
             <label for="kos-hotel">Kos/Hotel:</label>
-            <select id="kos-hotel">
+            <select id="kos-hotel" class="form-control">
               <option value="">Hotel</option>
               <option value="">Kos</option>
             </select>
@@ -54,14 +54,14 @@
         <div class="col-12 col-sm">
           <div class="check-date">
             <label for="date-in">Check In:</label>
-            <input type="text" class="date-input" id="date-in" />
+            <input type="text" class="date-input form-control" id="date-in" />
             <i class="icon_calendar"></i>
           </div>
         </div>
         <div class="col-12 col-sm">
           <div class="select-option">
             <label for="duratoin">Duration:</label>
-            <select id="duratoin">
+            <select id="duratoin" class="form-control">
               <option value="">1 Night</option>
               <option value="">2 Night</option>
               <option value="">3 Night</option>
@@ -72,7 +72,7 @@
         <div class="col-12 col-sm">
           <div class="select-option">
             <label for="room">Room:</label>
-            <select id="room">
+            <select id="room" class="form-control">
               <option value="">1 Room</option>
               <option value="">2 Room</option>
               <option value="">3 Room</option>

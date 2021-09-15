@@ -23,7 +23,7 @@ import editCustomer from '../views/Customer/editCustomer.vue';
 
 import CustomerDetailPesanan from '../views/CustomerView/Detail_Pesanan/Detail_Pesanan.vue';
 import CustomerRoomDetails from '../views/CustomerView/Room_Details/Room_Details.vue';
-
+import CustomerDetailBooking from '../views/CustomerView/Detail_Booking/Detail_Booking.vue';
 
 const routes = [
   {
@@ -193,7 +193,11 @@ const routes = [
     name: 'customer.roomdetails',
     component: CustomerRoomDetails
   },
-
+  {
+    path: '/customer/detailBooking',
+    name: 'customer.detailBooking',
+    component: CustomerDetailBooking
+  },
 ]
 const router = createRouter({
   history: createWebHashHistory(),

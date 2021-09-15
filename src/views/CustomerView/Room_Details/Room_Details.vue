@@ -95,21 +95,21 @@
 
                             <div for="myCheck" class="select-option">
                                 <label for="kos-hotel">Kos/Hotel:</label>
-                                <select id="kos-hotel">
+                                <select class="form-control" id="kos-hotel">
                                     <option value="">Hotel</option>
                                     <option value="">Kos</option>
                                 </select>
                             </div>
                             <div class="select-option">
                                 <label for="kos-hotel">Duration:</label>
-                                <select id="kos-hotel">
+                                <select class="form-control" id="kos-hotel">
                                     <option value="">1 Night</option>
                                     <option value="">2 Night</option>
                                 </select>
                             </div>
                             <div class="select-option">
                                 <label for="room">Room:</label>
-                                <select id="room">
+                                <select class="form-control"     id="room">
                                     <option value="">1 Room</option>
                                     <option value="">2 Room</option>
                                 </select>
