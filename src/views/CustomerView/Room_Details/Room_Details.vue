@@ -136,8 +136,6 @@ export default {
   components: {
     NavbarCustomer,
   },
-  (){
-      
-  }
+
 };
 </script>
