@@ -5,16 +5,16 @@
     </div>
     <nav class="mainmenu mobile-menu">
       <ul>
-        <li class="active"><a href="Admin/Pages/dashboard.html">Admin</a></li>
-        <li><a href="./rooms.html">Rooms</a></li>
-        <li><a href="./about-us.html">About Us</a></li>
-        <li>
+        <li><router-link to="/Admin"><a>Admin</a></router-link></li>
+        <li><router-link to="/customer/roomDetails"><a>Rooms</a></router-link></li>
+        <li><router-link to="/"><a>About Us</a></router-link></li>
+        <!-- <li>
           <a href="./pages.html">Pages</a>
           <ul class="dropdown">
             <li><a href="./room-details.html">Room Details</a></li>
             <li><a href="#">Gallery Room</a></li>
           </ul>
-        </li>
+        </li> -->
 
         <li><a href="./contact.html">Contact</a></li>
       </ul>
@@ -52,36 +52,20 @@
             <div class="nav-menu">
               <nav class="mainmenu">
                 <ul>
-                  <li class="active"><a href="./index.html">Home</a></li>
-                  <li><a href="./about-us.html">About Us</a></li>
+                  <router-link to="/"><li><a href="./index.html">Home</a></li></router-link>
+                  <router-link to="/"><li><a href="./about-us.html">About Us</a></li></router-link>
+                  <router-link to="/Admin"><li><a>Admin</a></li></router-link>
                   <li>
                     <a href="./pages.html">Pages</a>
                     <ul class="dropdown">
-                      <li><a href="./room-details.html">Room Details</a></li>
-                      <li><a href="#">Gallery Room</a></li>
+                      <router-link to="/"><li><a href="./room-details.html">Room Details</a></li></router-link>
+                      <router-link to="/"><li><a href="#">Gallery Room</a></li></router-link>
                     </ul>
                   </li>
                 </ul>
               </nav>
-              <div class="nav-right">
-                <div class="profile">
-                  <div class="row">
-                    <div class="col-4">
-                      <img src="img/user.png" alt="user_profile" />
-                    </div>
-                    <div class="col-8">
-                      <p>Username</p>
-                    </div>
-                  </div>
-                  <div class="dropdown-content">
-                    <a href="dashboard.html">Dashboard</a>
-                    <a href="booking.html"
-                      >Pesanan Anda
-                      <span class="badge badge-primary">1</span></a
-                    >
-                    <a class="user-logout" href="#">Logout</a>
-                  </div>
-                </div>
+              <div class="nav-right search-switch">
+                <router-link to="/login"><a class="login">Login</a></router-link>
               </div>
             </div>
           </div>
