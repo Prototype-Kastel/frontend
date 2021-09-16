@@ -612,6 +612,8 @@ ol {
     position: relative;
     padding-top: 60px;
     padding-bottom: 100px;
+    background-image:url('img/hero/hero-1.jpg');
+    background-size: cover;
 }
 
 .hero-section .container {
@@ -2663,4 +2665,13 @@ hr.line {
     .bar-desktop {
         display: none;
     }
+}
+
+.login{
+    width: 100%;
+    height: 100vh;
+}
+.image-login img{
+    background-image:url('img/hero/hero-1.jpg');
+    background-size: cover;
 }
