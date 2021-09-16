@@ -33,7 +33,8 @@
         </div>
       </div>
     </div>
-  </div>
+    
+  
   <div class="container-fluid mt--6">
     <div class="row">
       <div class="col">
@@ -83,6 +84,7 @@
 
       <v_footer />
     </div>
+  </div>
   </div>
 </template>
 

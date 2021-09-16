@@ -74,12 +74,8 @@
                     </div>
                   </div>
                   <div class="dropdown-content">
-                    <a href="dashboard.html">Dashboard</a>
-                    <a href="booking.html"
-                      >Pesanan Anda
-                      <span class="badge badge-primary">1</span></a
-                    >
-                    <a class="user-logout" href="#">Logout</a>
+                      <button class="btn btn-primary btn-sm"><router-link to="/dashboarduser">Dashboard</router-link></button> 
+                      <a class="user-logout" href="#">Logout</a>
                   </div>
                 </div>
               </div>

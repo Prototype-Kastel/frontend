@@ -42,15 +42,15 @@
       <div class="card-body">
         <!-- Form groups used in grid -->
         <form @submit.prevent="store()" >
-          <div class="row">
-            <div class="col-md-6">
+         
             <div class="form-group">
               <label for="">Name </label>
               <input type="text" class="form-control" v-model="name" />
               <div v-if="validation.name" class="text-danger">
                 {{ validation.name[0] }}
               </div>
-          </div>
+              </div>
+          
           <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -146,7 +146,9 @@
           </div>
         </form>
       </div>
+        <v_footer />
     </div>
+  </div>
   </div>
 </template>
 
@@ -154,7 +156,6 @@
 import v_footer from "@/components/v_footer.vue";
 import navbar from "@/components/Navbar.vue";
 import sidebar from "@/components/Sidebar.vue";
-import { onMounted, reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
 import { createToast } from 'mosha-vue-toastify';

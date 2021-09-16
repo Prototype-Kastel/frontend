@@ -3,39 +3,36 @@
   <div class="main-content mt-10" id="panel">
     <div class="header bg-primary pb-6">
     <!-- for navbar -->
-    <navbar />
-    <div class="container-fluid">
-      <div class="header-body">
-        <div class="row align-items-center py-4">
-          <div class="col-lg-6 col-7">
-            <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
-            <nav
-              aria-label="breadcrumb"
-              class="d-none d-md-inline-block ml-md-4"
-            >
-              <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                <li class="breadcrumb-item">
-                  <a href="dashboard.html#"><i class="fas fa-home"></i></a>
-                </li>
-                <li class="breadcrumb-item">
-                  <a href="dashboard.html#">Dashboards</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                  Default
-                </li>
-              </ol>
-            </nav>
-          </div>
-          <div class="col-lg-6 col-5 text-right">
-            <a class="btn btn-sm btn-neutral">
-              <router-link to="/room/create">Tambah Data</router-link>
-            </a>
+       <navbar />
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4" >
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item">
+                    <a href="dashboard.html#"><i class="fas fa-home"></i></a>
+                  </li>
+                  <li class="breadcrumb-item">
+                    <a href="dashboard.html#">Dashboards</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    Default
+                  </li>
+                </ol>
+              </nav>
+            </div>
+            <div class="col-lg-6 col-5 text-right">
+              <a class="btn btn-sm btn-neutral">
+                <router-link to="/room/create">Tambah Data</router-link>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
   </div>
-  <div class="container-fluid mt--4">
+    <div class="container-fluid mt--4">
     <div class="row">
       <div class="col">
         <div class="card">
@@ -74,14 +71,16 @@
             </div>
           </div>  
         </div>
+
       </div>
-    <v_footer/>
+    
    </div>
+ </div>
 </template>
 
 <script>
 
-import v_footer from "@/components/v_footer.vue";
+// import v_footer from "@/components/v_footer.vue";
 import navbar from "@/components/Navbar.vue";
 import sidebar from "@/components/Sidebar.vue";
 import axios from "axios";
@@ -93,7 +92,7 @@ export default {
   name: "Room",
   components: {
     sidebar,
-    v_footer,
+    // v_footer,
     navbar,
   },
   setup() {

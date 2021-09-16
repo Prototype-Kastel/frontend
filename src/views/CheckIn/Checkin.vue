@@ -1,4 +1,6 @@
 <template>
+  <sidebar />
+  <div class="main-content " id="panel">
   <div class="header bg-primary pb-6">
     <!-- for navbar -->
     <navbar />
@@ -89,6 +91,7 @@
 
     <v_footer />
   </div>
+  </div>
 </template>
 
 <script>
@@ -97,11 +100,13 @@ import navbar from "@/components/Navbar.vue";
 import axios from "axios";
 // import { createToast } from 'mosha-vue-toastify';
 import 'mosha-vue-toastify/dist/style.css' 
+import sidebar from "@/components/Sidebar.vue";
 export default {
   name: "Booking",
   components: {
     v_footer,
     navbar,
+    sidebar
   },
   data(){
     return{

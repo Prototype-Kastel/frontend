@@ -222,14 +222,6 @@ const routes = [
     name: 'editCustomer',
     component: editCustomer
   },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },
 // CUSTOMER VIEW
 
   {
@@ -247,6 +239,32 @@ const routes = [
     name: 'customer.detailBooking',
     component: CustomerDetailBooking
   },
+  {
+    path: '/dashboarduser',
+    name: 'dashboarduser',
+    component: () => import("@/views/CustomerView/Dashboard/dashboard.vue")
+  },
+  {
+    path: '/bookinguser',
+    name: 'bookinguser',
+    component: () => import("@/views/CustomerView/Dashboard/Booking/Booking.vue")
+  },
+  {
+    path: '/bookinguser/detailbooking',
+    name: 'bookinguser.detailbooking',
+    component: () => import("@/views/CustomerView/Dashboard/Booking/DetailBooking.vue")
+  },
+  {
+    path: '/listorder',
+    name: 'listorder',
+    component: () => import("@/views/CustomerView/Dashboard/List_Order/ListOrder.vue")
+  },
+  {
+    path: '/profileuser',
+    name: 'profileuser',
+    component: () => import("@/views/CustomerView/Dashboard/Profile/Profile.vue")
+  },
+ 
 ]
 const router = createRouter({
   history: createWebHashHistory(),

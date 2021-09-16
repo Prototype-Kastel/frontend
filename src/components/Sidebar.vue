@@ -1,31 +1,19 @@
 <template>
-  <nav
-    class="
-      sidenav
-      navbar navbar-vertical
-      fixed-left
-      navbar-expand-xs navbar-light
-      bg-white
-    "
-    id="sidenav-main"
-  >
-    <div class="scrollbar-inner">
-      <!-- Brand -->
-      <div class="sidenav-header d-flex align-items-center">
-        <a class="navbar-brand" href="dashboard.html">
-          <h2 class="text-blue">Aura Kastel</h2>
-        </a>
-        <div class="ml-auto">
-          <!-- Sidenav toggler -->
-          <div
-            class="sidenav-toggler d-none d-xl-block"
-            data-action="sidenav-unpin"
-            data-target="#sidenav-main"
-          >
-            <div class="sidenav-toggler-inner">
-              <i class="sidenav-toggler-line"></i>
-              <i class="sidenav-toggler-line"></i>
-              <i class="sidenav-toggler-line"></i>
+    <nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+      <div class="scrollbar-inner">
+        <!-- Brand -->
+        <div class="sidenav-header d-flex align-items-center">
+          <a class="navbar-brand" href="dashboard.html">
+            <h2 class="text-blue">Aura Kastel</h2>
+          </a>
+          <div class="ml-auto">
+            <!-- Sidenav toggler -->
+            <div class="sidenav-toggler d-none d-xl-block" data-action="sidenav-unpin" data-target="#sidenav-main">
+              <div class="sidenav-toggler-inner">
+                <i class="sidenav-toggler-line"></i>
+                <i class="sidenav-toggler-line"></i>
+                <i class="sidenav-toggler-line"></i>
+              </div>
             </div>
           </div>
         </div>
@@ -41,6 +29,7 @@
                       <span class="nav-link-text text-default">Dashboards</span>
                      </router-link>
                 </a>
+             
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#booking" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="booking">
@@ -50,18 +39,18 @@
                 <div class="collapse" id="booking">
                   <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
-                      <a class="nav-link">
-                        <router-link to="/Booking">
-                          <span class="nav-link-text text-default">Booking</span>
-                        </router-link>
-                      </a>
+                       <a class="nav-link">
+                            <router-link to="/booking">
+                              <span class="nav-link-text text-default">Booking</span>
+                            </router-link>
+                        </a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link">
-                        <router-link to="/checkin">
-                          <span class="nav-link-text text-default">Check In</span>
-                        </router-link>
-                      </a>
+                   <li class="nav-item">
+                       <a class="nav-link">
+                            <router-link to="/checkin">
+                              <span class="nav-link-text text-default">Check In</span>
+                            </router-link>
+                        </a>
                     </li>
                     <li class="nav-item">
                        <a class="nav-link">
@@ -127,25 +116,25 @@
                 </a>
                 <div class="collapse" id="service">
                   <ul class="nav nav-sm flex-column">
+                      <li class="nav-item">
+                        <a class="nav-link">
+                            <router-link to="/RoomStatus">
+                              <span class="nav-link-text text-default">Room Status</span>
+                            </router-link>
+                        </a>
+                     </li>   
+                
+                     <li class="nav-item">
+                        <a class="nav-link">
+                            <router-link to="/LostFound">
+                              <span class="nav-link-text text-default">Lost & Found</span>
+                            </router-link>
+                        </a>
+                    </li>   
                     <li class="nav-item">
-                      <a class="nav-link">
-                        <router-link to="/RoomStatus">
-                          <span class="nav-link-text text-default">Room Status</span>
-                        </router-link>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link">
-                        <router-link to="/LostFound">
-                          <span class="nav-link-text text-default">Lost & Found</span>
-                        </router-link>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link">
-                        <router-link to="/History">
-                          <span class="nav-link-text text-default">History</span>
-                        </router-link>
+                      <a href="Service/history.html" class="nav-link">
+                        <span class="sidenav-mini-icon">  </span>
+                        <span class="sidenav-normal"> History </span>
                       </a>
                     </li>
                   </ul>
@@ -190,15 +179,15 @@
           </div>
         </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 </template>
 
 <script>
 export default {
-  name: "Sidebar",
-};
+    name : 'Sidebar',
+}
 </script>
 
 <style>
+
 </style>
