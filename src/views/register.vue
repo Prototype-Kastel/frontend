@@ -1,7 +1,7 @@
 <template>
   <div class="row login">
     <div style="display:inline-block;padding:50px" class="col-md-6 form">
-            <img src="img/logo.png" alt="">
+            <router-link to="/"><img src="img/logo.png" alt=""></router-link>
             <h1 style="margin-top:30px">Registrasi</h1>
             <form>
                 <div class="form-group">
@@ -30,6 +30,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Daftar</button>
             </form>
+            <p style="margin-top:30px;opacity:0.8">sudah punya akun ? <router-link to="/login"><a>masuk</a></router-link></p>
     </div>
     <div class="col-md-6" style="display:inline-block">
         <div class="image-login">
