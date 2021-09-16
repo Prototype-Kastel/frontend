@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import HomeAdmin from '../views/HomeAdmin.vue'
 import Room from '../views/Room/Room.vue';
 import RoomType from '../views/Room_Type/roomType.vue';
 import roomprice from '../views/Room_Price/roomPrice.vue';
@@ -14,13 +15,26 @@ import History from '../views/History/history.vue';
 import RoomStatus from '../views/Room_Status/RoomStatus.vue';
 import addRoomStatus from '../views/Room_Status/addRoomStatus.vue';
 import editRoomStatus from '../views/Room_Status/editRoomStatus.vue';
+import Customer from '../views/Customer/Customer.vue';
+import addCustomer from '../views/Customer/addCustomer.vue';
+import editCustomer from '../views/Customer/editCustomer.vue';
 
+// Customer View
+
+import CustomerDetailPesanan from '../views/CustomerView/Detail_Pesanan/Detail_Pesanan.vue';
+import CustomerRoomDetails from '../views/CustomerView/Room_Details/Room_Details.vue';
+import CustomerDetailBooking from '../views/CustomerView/Detail_Booking/Detail_Booking.vue';
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/Admin',
+    name: 'HomeAdmin',
+    component: HomeAdmin
   },
   {
     path: '/room',
@@ -194,15 +208,46 @@ const routes = [
     component: editRoomStatus
   },
   {
+    path: '/Customer',
+    name: 'Customer',
+    component: Customer
+  },
+  {
+    path: '/Customer/addCustomer',
+    name: 'addCustomer',
+    component: addCustomer
+  },
+  {
+    path: '/Customer/editCustomer',
+    name: 'editCustomer',
+    component: editCustomer
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+  },
+// CUSTOMER VIEW
 
+  {
+    path: '/customer/detailPesanan',
+    name: 'customer.detailpesanan',
+    component: CustomerDetailPesanan
+  },
+  {
+    path: '/customer/roomDetails',
+    name: 'customer.roomdetails',
+    component: CustomerRoomDetails
+  },
+  {
+    path: '/customer/detailBooking',
+    name: 'customer.detailBooking',
+    component: CustomerDetailBooking
+  },
+]
 const router = createRouter({
   history: createWebHashHistory(),
   routes

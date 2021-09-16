@@ -1,5 +1,7 @@
-<template>
-  <div class="header bg-primary pb-6">
+ <template>
+  <sidebar />
+  <div class="main-content mt-10" id="panel">
+    <div class="header bg-primary pb-6">
     <!-- for navbar -->
     <navbar />
     <div class="container-fluid">
@@ -78,6 +80,7 @@
     </div>
 
     <v_footer />
+    </div>
   </div>
 </template>
 
@@ -85,11 +88,13 @@
 import v_footer from "@/components/v_footer.vue";
 import navbar from "@/components/Navbar.vue";
 import axios from "axios";
-// import { onMounted, ref } from "vue";
+import sidebar from "@/components/Sidebar.vue";
+
 
 export default {
   name: "RoomStatus",
   components: {
+    sidebar,
     v_footer,
     navbar,
   },

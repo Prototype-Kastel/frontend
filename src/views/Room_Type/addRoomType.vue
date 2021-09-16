@@ -1,24 +1,35 @@
-<template>
-  <div class="header bg-primary pb-6">
-    <!-- for navbar -->
-    <navbar/>
-    <div class="container-fluid">
-      <div class="header-body">
-        <div class="row align-items-center py-4">
-          <div class="col-lg-6 col-7">
-            <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
-            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-              <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                <li class="breadcrumb-item"><a href="dashboard.html#"><i class="fas fa-home"></i></a></li>
-                <li class="breadcrumb-item"><a href="dashboard.html#">Dashboards</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Default</li>
-              </ol>
-            </nav>
+ <template>
+  <sidebar />
+  <div class="main-content mt-10" id="panel">
+    <div class="header bg-primary pb-6">
+      <!-- for navbar -->
+      <navbar />
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
+              <nav
+                aria-label="breadcrumb"
+                class="d-none d-md-inline-block ml-md-4"
+              >
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item">
+                    <a href="dashboard.html#"><i class="fas fa-home"></i></a>
+                  </li>
+                  <li class="breadcrumb-item">
+                    <a href="dashboard.html#">Dashboards</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    Default
+                  </li>
+                </ol>
+              </nav>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
   <div class="container-fluid mt--6">
     <div class="card mb-4">
@@ -81,10 +92,24 @@
                   <div v-if="validation.gender" class="text-danger">
                     {{ validation.gender[0] }}
                   </div>
-              </div>
-            </div>
-          </div>
-            <div class="form-group">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="">Gender </label>
+                      <select
+                        class="form-control"
+                        v-model="itemRoomType.gender"
+                      >
+                        <option value="male" selected>Male</option>
+                        <option value="female">Female</option>
+                        <option value="all">All</option>
+                      </select>
+                      <div v-if="validation.gender" class="text-danger">
+                        {{ validation.gender[0] }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
                   <label for="">Esktra Service </label>
                    <select name="" id="" class="form-control"  v-model="room_type_facility" multiple>
                      <option selected >Choose your Faciliy</option>
@@ -121,7 +146,6 @@
           </div>
         </form>
       </div>
-      <v_footer/>
     </div>
   </div>
 </template>
@@ -129,6 +153,8 @@
 <script>
 import v_footer from "@/components/v_footer.vue";
 import navbar from "@/components/Navbar.vue";
+import sidebar from "@/components/Sidebar.vue";
+import { onMounted, reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
 import { createToast } from 'mosha-vue-toastify';
@@ -137,6 +163,7 @@ import 'mosha-vue-toastify/dist/style.css'
 export default {
   name: "addRoomType",
   components: {
+    sidebar,
     v_footer,
     navbar
     

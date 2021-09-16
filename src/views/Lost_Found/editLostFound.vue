@@ -1,5 +1,7 @@
-<template>
-  <div class="header bg-primary pb-6">
+ <template>
+  <sidebar />
+  <div class="main-content mt-10" id="panel">
+    <div class="header bg-primary pb-6">
     <!-- for navbar -->
     <navbar />
     <div class="container-fluid"></div>
@@ -129,6 +131,7 @@
     </div>
 
     <v_footer />
+    </div>
   </div>
 </template>
 
@@ -139,13 +142,12 @@ import axios from "axios";
 import { createToast } from 'mosha-vue-toastify';
 import 'mosha-vue-toastify/dist/style.css'
 import moment from 'moment';
-
-
-
+import sidebar from "@/components/Sidebar.vue";
 
 export default {
   name: "editLostFound",
   components: {
+    sidebar,
     v_footer,
     navbar
   },

@@ -1,5 +1,7 @@
-<template>
-  <div class="header bg-primary pb-6">
+ <template>
+  <sidebar />
+  <div class="main-content mt-10" id="panel">
+    <div class="header bg-primary pb-6">
     <!-- for navbar -->
     <navbar />
 
@@ -122,6 +124,7 @@
     </div>
 
     <v_footer />
+    </div>
   </div>
 </template>
 
@@ -129,7 +132,7 @@
 import v_footer from "@/components/v_footer.vue";
 import navbar from "@/components/Navbar.vue";
 import axios from "axios";
-// import { onMounted, ref } from "vue";
+import sidebar from "@/components/Sidebar.vue";
 import { useRouter } from "vue-router";
 import moment from 'moment';
 import { createToast } from 'mosha-vue-toastify';
@@ -138,6 +141,7 @@ import 'mosha-vue-toastify/dist/style.css'
 export default {
   name: "editRoomStatus",
   components: {
+    sidebar,
     v_footer,
     navbar
     

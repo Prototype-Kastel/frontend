@@ -1,10 +1,12 @@
 <template>
-  <div class="header bg-primary pb-6">
-    <!-- for navbar -->
-    <navbar />
-  </div>
-  <div class="container-fluid mt--6">
-    <div class="row">
+  <sidebar />
+  <div class="main-content mt-10" id="panel">
+    <div class="header bg-primary pb-6">
+      <!-- for navbar -->
+      <navbar />
+    </div>
+    <div class="container-fluid mt--6">
+      <div class="row">
         <div class="col">
           <div class="card">
             <!-- Card header -->
@@ -227,7 +229,6 @@
                 </div>
                 <div class="col-md-6">
                   <div class="card">
-                    
                     <div class="card-header">Payment Booking</div>
                     <div class="card-body">
                           <div class="form-group">
@@ -356,7 +357,8 @@
         </div>
       </div>
 
-    <v_footer />
+      <v_footer />
+    </div>
   </div>
 </template>
 
@@ -367,10 +369,11 @@ import axios from "axios";
 import { useRouter } from "vue-router";
 import { createToast } from 'mosha-vue-toastify';
 import 'mosha-vue-toastify/dist/style.css'
-
+import sidebar from "@/components/Sidebar.vue";
 export default {
   name: "addBooking",
   components: {
+    sidebar,
     v_footer,
     navbar,
   },

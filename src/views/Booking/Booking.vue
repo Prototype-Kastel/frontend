@@ -1,30 +1,34 @@
 <template>
-  <div class="header bg-primary pb-6">
-    <!-- for navbar -->
-    <navbar />
-    <div class="container-fluid">
-      <div class="header-body">
-        <div class="row align-items-center py-4">
-          <div class="col-lg-6 col-7">
-            <h6 class="h2 text-white d-inline-block mb-0">Booking</h6>
-            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4" >
-              <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                <li class="breadcrumb-item">
-                  <a href="datatables.html#"><i class="fas fa-home"></i></a>
-                </li>
-                <li class="breadcrumb-item">
-                   
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                  Booking
-                </li>
-              </ol>
-            </nav>
-          </div>
-          <div class="col-lg-6 col-5 text-right">
-            <a class="btn btn-sm btn-neutral">
+  <sidebar />
+  <div class="main-content mt-10" id="panel">
+    <div class="header bg-primary pb-6">
+      <!-- for navbar -->
+      <navbar />
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">Booking</h6>
+              <nav
+                aria-label="breadcrumb"
+                class="d-none d-md-inline-block ml-md-4"
+              >
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item">
+                    <a href="datatables.html#"><i class="fas fa-home"></i></a>
+                  </li>
+                  <li class="breadcrumb-item"></li>
+                  <li class="breadcrumb-item active" aria-current="page">
+                    Booking
+                  </li>
+                </ol>
+              </nav>
+            </div>
+            <div class="col-lg-6 col-5 text-right">
+              <a class="btn btn-sm btn-neutral">
                 <router-link to="/Booking/addBooking">Tambah Data</router-link>
-            </a>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -76,9 +80,9 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <v_footer />
+      <v_footer />
+    </div>
   </div>
 </template>
 
@@ -88,9 +92,11 @@ import navbar from "@/components/Navbar.vue";
 import axios from "axios";
 // import { createToast } from 'mosha-vue-toastify';
 import 'mosha-vue-toastify/dist/style.css' 
+import sidebar from "@/components/Sidebar.vue";
 export default {
   name: "Booking",
   components: {
+    sidebar,
     v_footer,
     navbar,
   },
