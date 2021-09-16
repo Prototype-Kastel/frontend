@@ -32,7 +32,8 @@
         <hr class="line" />
       </div>
     </div>
-    <form action="room.html">
+    
+  <form action="room.html">
       <div class="row">
         <div class="col-12 col-sm">
           <div class="select-option">
@@ -55,7 +56,7 @@
         <div class="col-12 col-sm">
           <div class="check-date">
             <label for="date-in">Check In:</label>
-            <input type="text" class="date-input form-control" id="date-in" />
+            <input type="date" class="date-input form-control" id="date-in" />
             <i class="icon_calendar"></i>
           </div>
         </div>
@@ -82,241 +83,55 @@
           </div>
         </div>
         <div class="col-12 col-sm">
-          <button type="submit">Check Availability</button>
+          <button class="btn btn-primary btn-outline" type="submit">Check Availability</button>
         </div>
       </div>
     </form>
+    
+   
     <br />
     <hr class="line" />
   </div>
   <div class="row">
     <div class="col-lg-12">
-      <div class="section-title">
+      <div class="section-title mt-4" >
         <span>aura kostel</span>
         <h2>Our Room</h2>
       </div>
     </div>
   </div>
-  <div class="container-fluid mt-6">
+  <div class="container-fluid mt-2">
     <div class="row">
       <div class="col">
-        <div class="card">
-          <!-- Card header -->
-          <div class="card-body">
-            <div class="owl-carousel owl-carousel1 owl-theme">
-              <div class="item">
-                <div class="card">
-                  <!-- Card image -->
-                  <img
-                    class="card-img-top"
-                    src="img/room/room-5.jpg"
-                    alt="Image placeholder"
-                  />
-                  <!-- Card body -->
-                  <div class="card-body">
-                    <div class="form-group">
-                      <button
-                        type="menu"
-                        class="btn btn-outline-primary btn-sm"
-                        disabled
-                      >
-                        Male
-                      </button>
-                      <button
-                        disabled="disabled"
-                        class="btn btn-primary btn-sm"
-                      >
-                        Available
-                      </button>
-                    </div>
-                    <h6 class="h5 card-title mb-0"><b>Standard Room</b></h6>
-                    <p class="card-text">
-                      Jl. Pertanian III No.12, RT.5/RW.4, Lb. Bulus..
-                    </p>
-                    <h4 class="card-text"><b>Jakarta Selatan</b></h4>
-                    <small class="text-muted"
-                      >Kamar Mandi,Wifi,Dapur,Parkir</small
-                    >
-                    <p class="card-text"><b>Rp.300.000/Nigth</b></p>
-                    <a
-                      href="room-details.html"
-                      class="btn btn-outline-primary btn-sm mt-2"
-                      >Detail Rooms</a
-                    >
+           <Carousel :settings="settings" :breakpoints="breakpoints"  :autoplay="2000">
+              <Slide v-for="slide in 10" :key="slide"> 
+                  <div class="carousel__item " >
+                      <div class="card mr-2 text-left">
+                          <!-- Card image -->
+                          <img class="card-img-top" src="img/room/room-5.jpg" alt="Image placeholder">
+                          <!-- Card body -->
+                          <div class="card-body">
+                              <div class="form-group">
+                                  <button type="menu" class="btn btn-outline-primary btn-sm" disabled>Male</button>
+                                  <button disabled="disabled" class="btn btn-primary btn-sm">Available</button>
+                              </div>
+                              <h6 class="h2 card-title mb-0">Standard Room</h6>
+                              <h5 class="card-text"> Jl. Pertanian III No.12, RT.5/RW.4, Lb. Bulus..</h5>
+                              <h4 class="card-text"> <b>Jakarta Selatan</b></h4>
+                              <small class="text-muted">Kamar Mandi,Wifi,Dapur,Parkir</small>
+                              <h4 class="card-text"><b>Rp.300.000/Nigth</b></h4>
+                              <a href="room-details.html" class="btn btn-outline-primary btn-sm mt-2">Detail Rooms</a>
+                          </div>
+                      </div>                
                   </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="card">
-                  <!-- Card image -->
-                  <img
-                    class="card-img-top"
-                    src="img/room/room-3.jpg"
-                    alt="Image placeholder"
-                  />
-                  <!-- Card body -->
-                  <div class="card-body">
-                    <div class="form-group">
-                      <button
-                        type="menu"
-                        class="btn btn-outline-primary btn-sm"
-                        disabled
-                      >
-                        Male
-                      </button>
-                      <button
-                        disabled="disabled"
-                        class="btn btn-primary btn-sm"
-                      >
-                        Available
-                      </button>
-                    </div>
-                    <h6 class="h5 card-title mb-0"><b>Standard Room</b></h6>
-                    <p class="card-text">
-                      Jl. Pertanian III No.12, RT.5/RW.4, Lb. Bulus..
-                    </p>
-                    <h4 class="card-text"><b>Jakarta Selatan</b></h4>
-                    <small class="text-muted"
-                      >Kamar Mandi,Wifi,Dapur,Parkir</small
-                    >
-                    <p class="card-text"><b>Rp.300.000/Nigth</b></p>
-                    <a
-                      href="room-details.html"
-                      class="btn btn-outline-primary btn-sm mt-2"
-                      >Detail Rooms</a
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="card">
-                  <!-- Card image -->
-                  <img
-                    class="card-img-top"
-                    src="img/room/room-4.jpg"
-                    alt="Image placeholder"
-                  />
-                  <!-- Card body -->
-                  <div class="card-body">
-                    <div class="form-group">
-                      <button
-                        type="menu"
-                        class="btn btn-outline-primary btn-sm"
-                        disabled
-                      >
-                        Male
-                      </button>
-                      <button
-                        disabled="disabled"
-                        class="btn btn-primary btn-sm"
-                      >
-                        Available
-                      </button>
-                    </div>
-                    <h6 class="h5 card-title mb-0"><b>Standard Room</b></h6>
-                    <p class="card-text">
-                      Jl. Pertanian III No.12, RT.5/RW.4, Lb. Bulus..
-                    </p>
-                    <h4 class="card-text"><b>Jakarta Selatan</b></h4>
-                    <small class="text-muted"
-                      >Kamar Mandi,Wifi,Dapur,Parkir</small
-                    >
-                    <p class="card-text"><b>Rp.300.000/Nigth</b></p>
-                    <a
-                      href="room-details.html"
-                      class="btn btn-outline-primary btn-sm mt-2"
-                      >Detail Rooms</a
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="card">
-                  <!-- Card image -->
-                  <img
-                    class="card-img-top"
-                    src="img/room/room-1.jpg"
-                    alt="Image placeholder"
-                  />
-                  <!-- Card body -->
-                  <div class="card-body">
-                    <div class="form-group">
-                      <button
-                        type="menu"
-                        class="btn btn-outline-primary btn-sm"
-                        disabled
-                      >
-                        Male
-                      </button>
-                      <button
-                        disabled="disabled"
-                        class="btn btn-primary btn-sm"
-                      >
-                        Available
-                      </button>
-                    </div>
-                    <h6 class="h5 card-title mb-0"><b>Standard Room</b></h6>
-                    <p class="card-text">
-                      Jl. Pertanian III No.12, RT.5/RW.4, Lb. Bulus..
-                    </p>
-                    <h4 class="card-text"><b>Jakarta Selatan</b></h4>
-                    <small class="text-muted"
-                      >Kamar Mandi,Wifi,Dapur,Parkir</small
-                    >
-                    <p class="card-text"><b>Rp.300.000/Nigth</b></p>
-                    <a
-                      href="room-details.html"
-                      class="btn btn-outline-primary btn-sm mt-2"
-                      >Detail Rooms</a
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="card">
-                  <!-- Card image -->
-                  <img
-                    class="card-img-top"
-                    src="img/room/room-2.jpg"
-                    alt="Image placeholder"
-                  />
-                  <!-- Card body -->
-                  <div class="card-body">
-                    <div class="form-group">
-                      <button
-                        type="menu"
-                        class="btn btn-outline-primary btn-sm"
-                        disabled
-                      >
-                        Male
-                      </button>
-                      <button
-                        disabled="disabled"
-                        class="btn btn-primary btn-sm"
-                      >
-                        Available
-                      </button>
-                    </div>
-                    <h6 class="h5 card-title mb-0"><b>Standard Room</b></h6>
-                    <p class="card-text">
-                      Jl. Pertanian III No.12, RT.5/RW.4, Lb. Bulus..
-                    </p>
-                    <h4 class="card-text"><b>Jakarta Selatan</b></h4>
-                    <small class="text-muted"
-                      >Kamar Mandi,Wifi,Dapur,Parkir</small
-                    >
-                    <p class="card-text"><b>Rp.300.000/Nigth</b></p>
-                    <a
-                      href="room-details.html"
-                      class="btn btn-outline-primary btn-sm mt-2"
-                      >Detail Rooms</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+              </Slide>
+
+              <template #addons>
+                  <Navigation />
+                  <Pagination />
+              </template>
+          </Carousel>
+         
       </div>
     </div>
   </div>
@@ -375,43 +190,42 @@
       </div>
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
-          <carousel class="testimonial-slider">
-            <div class="ts-item">
-              <p>
-                This is my first time staying at Aura Kost and guest house, I
-                stayed here almost 5 months, the room is like a 3 stars hotel
-                include facilities (AC, wifi, bed, table, chair, lamp, cupboard,
-                etc) and the area nearby tangerang selatan hospital and close to
-                the main road is perfect. Thanks for Service during my stay
-              </p>
-              <div class="ti-author">
-                <div class="rating">
-                  <i class="icon_star"></i>
-                  <i class="icon_star"></i>
-                  <i class="icon_star"></i>
-                  <i class="icon_star"></i>
-                  <i class="icon_star-half_alt"></i>
-                </div>
-                <h5>- Andreas Oktavalentino Sirait</h5>
-              </div>
-            </div>
-            <div class="ts-item">
-              <p>
-                Nyaman, bersih, rapi, dan yg jelas bikin betah banget, akses
-                fasilitas umum jg deket
-              </p>
-              <div class="ti-author">
-                <div class="rating">
-                  <i class="icon_star"></i>
-                  <i class="icon_star"></i>
-                  <i class="icon_star"></i>
-                  <i class="icon_star"></i>
-                  <i class="icon_star-half_alt"></i>
-                </div>
-                <h5>- Putri Monica</h5>
-              </div>
-            </div>
-          </carousel>
+           <Carousel :settings="settings" :breakpoints="breakpointstestimoni"  :autoplay="2000">
+              <Slide v-for="slide in 10" :key="slide"> 
+                  <div class="carousel__item " >
+                   <div class="card">
+                     <div class="card-body">
+                        <p>
+                        This is my first time staying at Aura Kost and guest house, I
+                        stayed here almost 5 months, the room is like a 3 stars hotel
+                        include facilities (AC, wifi, bed, table, chair, lamp, cupboard,
+                        etc) and the area nearby tangerang selatan hospital and close to
+                        the main road is perfect. Thanks for Service during my stay
+                      </p>
+                      <div class="ti-author">
+                        <div class="rating">
+                          <i class="icon_star"></i>
+                          <i class="icon_star"></i>
+                          <i class="icon_star"></i>
+                          <i class="icon_star"></i>
+                          <i class="icon_star-half_alt"></i>
+                        </div>
+                        <h5>- Andreas Oktavalentino Sirait</h5>
+                     </div>
+
+                     
+                      </div>
+                    </div>
+                  </div>
+              </Slide>
+
+              <template #addons>
+                  <Navigation />
+                  <Pagination />
+              </template>
+          </Carousel>
+           
+         
         </div>
       </div>
     </div>
@@ -421,14 +235,53 @@
 
 <script>
 import NavbarCustomer from "@/components/NavbarCustomer.vue";
-import carousel from 'vue-owl-carousel';
+import 'vue3-carousel/dist/carousel.css';
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+
 // import axios from "axios";
 // import { onMounted, ref } from "vue";
 export default {
   name: "dashboard",
   components: {
     NavbarCustomer,
-    carousel
+    Carousel,
+    Slide,
+    Pagination,
+    Navigation,
   },
+   data() {
+    return {
+          settings: {
+            itemsToShow: 1,
+            snapAlign: 'center',
+            },
+
+        breakpoints: {
+        // 700px and up
+        700: {
+            itemsToShow: 2,
+            snapAlign: 'center',
+        },
+        // 1024 and up
+        1024: {
+            itemsToShow: 3.5,
+            snapAlign: 'start',
+        },
+        },
+        breakpointstestimoni: {
+        // 700px and up
+        700: {
+            itemsToShow: 1,
+            snapAlign: 'center',
+        },
+        // 1024 and up
+        1024: {
+            itemsToShow: 2,
+            snapAlign: 'start',
+        },
+        },
+     }
+    },
+
 };
 </script>

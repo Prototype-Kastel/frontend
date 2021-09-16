@@ -55,10 +55,10 @@
 </template>
 <script>
 import { defineComponent } from 'vue'
-import 'vue3-carousel/dist/carousel.css';
 import sidebarcustomer from '@/components/SidebarCustomer.vue';
 import v_footer from '@/components/v_footer.vue';
 import navbar from "@/components/Navbar.vue";
+import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 
 
