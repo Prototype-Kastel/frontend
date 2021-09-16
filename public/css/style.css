@@ -2672,12 +2672,14 @@ hr.line {
     height: 100vh;
     margin: 0;
 }
-.form {
-    padding-top: 70px;
-    padding-left: 100px;
-}
 .image-login{
     height: 100%;
+}
+.form img{
+    width: 30%;
+}
+.form form {
+    margin-top: 40px;
 }
 .image-login img{
     height: 100%;

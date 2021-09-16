@@ -1,6 +1,7 @@
 <template>
   <div class="row login">
     <div style="display:inline-block;padding:70px" class="col-md-6 form">
+            <img src="img/logo.png" alt=""><br>
             <form>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
