@@ -1,7 +1,7 @@
 <template>
   <div class="row login">
     <div style="display:inline-block;padding:70px" class="col-md-6 form">
-            <img src="img/logo.png" alt=""><br>
+            <img src="img/logo.png" alt="">
             <form>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
@@ -21,7 +21,7 @@
     </div>
     <div class="col-md-6" style="display:inline-block">
         <div class="image-login">
-            <img src="img/hero/hero-3.jpg" alt="">
+            <img src="img/hero/hero-2.jpg" alt="">
         </div>
     </div>
   </div>
