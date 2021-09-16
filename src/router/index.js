@@ -138,6 +138,27 @@ const routes = [
     component: editBooking
   },
   {
+    path: '/checkin',
+    name: 'checkin',
+    component: () => import("@/views/CheckIn/Checkin.vue")
+  },
+  {
+    path: '/checkin/edit/:id',
+    name: 'checkin.edit',
+    component: () => import("@/views/CheckIn/editCheckin.vue")
+  },
+  {
+    path: '/checkin/edit/:id/addcheckincustomer',
+    name: 'checkin.addbookingCustomer',
+    component: () => import("@/views/CheckIn/addcheckinCustomer.vue")
+  }, 
+  {
+    path: '/checkin/edit/:id/addcheckinRoom',
+    name: 'checkin.addcheckinroom',
+    component: () => import("@/views/CheckIn/addcheckinRoom.vue")
+  },
+
+  {
     path: '/LostFound',
     name: 'LostFound',
     component: LostFound

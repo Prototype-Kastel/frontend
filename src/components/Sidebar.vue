@@ -45,9 +45,10 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="Bookings/Check_in/checkIn.html" class="nav-link">
-                        <span class="sidenav-mini-icon">  </span>
-                        <span class="sidenav-normal"> Check In</span>
+                      <a class="nav-link">
+                        <router-link to="/checkin">
+                          <span class="nav-link-text text-default">Check In</span>
+                        </router-link>
                       </a>
                     </li>
                     <li class="nav-item">

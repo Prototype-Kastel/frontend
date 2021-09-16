@@ -104,7 +104,7 @@ import { createToast } from 'mosha-vue-toastify';
 import 'mosha-vue-toastify/dist/style.css'
 
 export default {
-  name: "addbookingRoom",
+  name: "addcheckinRoom",
   components: {
     v_footer,
     navbar,
