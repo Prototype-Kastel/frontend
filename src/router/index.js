@@ -20,10 +20,11 @@ import addCustomer from '../views/Customer/addCustomer.vue';
 import editCustomer from '../views/Customer/editCustomer.vue';
 
 // Customer View
-
+import login from '../views/login.vue';
+import register from '../views/register.vue';
 import CustomerDetailPesanan from '../views/CustomerView/Detail_Pesanan/Detail_Pesanan.vue';
 import CustomerRoomDetails from '../views/CustomerView/Room_Details/Room_Details.vue';
-import CustomerDetailBooking from '../views/CustomerView/Detail_Booking/Detail_Booking.vue';
+import CustomerCheckout from '../views/CustomerView/Checkout/Checkout.vue';
 
 const routes = [
   {
@@ -235,9 +236,19 @@ const routes = [
     component: CustomerRoomDetails
   },
   {
-    path: '/customer/detailBooking',
-    name: 'customer.detailBooking',
-    component: CustomerDetailBooking
+    path: '/customer/checkout',
+    name: 'customer.checkout',
+    component: CustomerCheckout
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: login
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: register
   },
   {
     path: '/dashboarduser',

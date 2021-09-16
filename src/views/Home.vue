@@ -2,7 +2,7 @@
   <navbar-customer />
   <!-- Hero Section Begin -->
   <section class="hero-section" style="background-image:url('img/hero/hero-1.jpg')">
-    <div class="container">
+    <div background="img/hero/hero-3.jpg" class="container">
       <div class="row">
         <div class="col-lg-6">
           <div class="hero-text">
@@ -16,6 +16,7 @@
         </div>
       </div>
     </div>
+    
   </section>
   <!-- Hero Section End -->
   
