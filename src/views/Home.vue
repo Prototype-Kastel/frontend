@@ -1,7 +1,10 @@
 <template>
   <navbar-customer />
   <!-- Hero Section Begin -->
-  <section class="hero-section" style="background-image:url('img/hero/hero-1.jpg')">
+  <section
+    class="hero-section"
+    style="background-image: url('img/hero/hero-1.jpg')"
+  >
     <div background="img/hero/hero-3.jpg" class="container">
       <div class="row">
         <div class="col-lg-6">
@@ -16,24 +19,22 @@
         </div>
       </div>
     </div>
-    
   </section>
   <!-- Hero Section End -->
-  
+
   <div class="booking-form">
     <div class="row">
       <div class="col">
         <hr class="line" />
       </div>
       <div class="col">
-        <h4>Booking Your Hotel</h4>
+        <h1 style="text-align: center">Booking Your Hotel</h1>
       </div>
       <div class="col">
         <hr class="line" />
       </div>
     </div>
-    
-  <form action="room.html">
+    <form>
       <div class="row">
         <div class="col-12 col-sm">
           <div class="select-option">
@@ -83,7 +84,7 @@
           </div>
         </div>
         <div class="col-12 col-sm">
-          <button class="btn btn-primary btn-outline" type="submit">Check Availability</button>
+          <router-link to="/roomSearch"><button type="submit">Check Availability</button></router-link>
         </div>
       </div>
     </form>
@@ -92,6 +93,11 @@
     <br />
     <hr class="line" />
   </div>
+
+
+
+
+  <!-- HOME content -->
   <div class="row">
     <div class="col-lg-12">
       <div class="section-title mt-4" >
@@ -120,7 +126,8 @@
                               <h4 class="card-text"> <b>Jakarta Selatan</b></h4>
                               <small class="text-muted">Kamar Mandi,Wifi,Dapur,Parkir</small>
                               <h4 class="card-text"><b>Rp.300.000/Nigth</b></h4>
-                              <a href="room-details.html" class="btn btn-outline-primary btn-sm mt-2">Detail Rooms</a>
+                              <router-link to="customer/roomDetails"><a href="#" class="btn btn-outline-primary btn-sm mt-2">Detail Rooms</a></router-link>
+                              
                           </div>
                       </div>                
                   </div>
@@ -247,38 +254,39 @@ export default {
     Carousel,
     Slide,
     Pagination,
-    Navigation,
+    Navigation
   },
-   data() {
-    return {
-          settings: {
+  data(){ 
+    return{
+          settings:{
             itemsToShow: 1,
             snapAlign: 'center',
             },
 
         breakpoints: {
-        // 700px and up
-        700: {
-            itemsToShow: 2,
-            snapAlign: 'center',
+            // 700px and up
+            700: {
+                itemsToShow: 2,
+                snapAlign: 'center',
+            },
+            // 1024 and up
+            1024: {
+                itemsToShow: 3.5,
+                snapAlign: 'start',
         },
-        // 1024 and up
-        1024: {
-            itemsToShow: 3.5,
-            snapAlign: 'start',
-        },
+
         },
         breakpointstestimoni: {
-        // 700px and up
-        700: {
-            itemsToShow: 1,
-            snapAlign: 'center',
-        },
-        // 1024 and up
-        1024: {
-            itemsToShow: 2,
-            snapAlign: 'start',
-        },
+            // 700px and up
+            700: {
+                itemsToShow: 1,
+                snapAlign: 'center',
+            },
+            // 1024 and up
+            1024: {
+                itemsToShow: 2,
+                snapAlign: 'start',
+            },
         },
      }
     },
