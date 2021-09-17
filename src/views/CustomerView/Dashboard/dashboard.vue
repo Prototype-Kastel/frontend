@@ -75,7 +75,7 @@ export default defineComponent({
     },
     data() {
         return {
-             settings: {
+            settings: {
                 itemsToShow: 1,
                 snapAlign: 'center',
                 },
@@ -90,7 +90,7 @@ export default defineComponent({
             1024: {
                 itemsToShow: 3,
                 snapAlign: 'start',
-            },
+             },
             },
         }
     },

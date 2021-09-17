@@ -116,8 +116,8 @@
                             </div>
                             <h3>Rp.<span id="text">2700000</span></h3>
                             <p>/month/room</p>
-
-                            <button type="submit">Book Now</button>
+                             <router-link to="/customer/checkout"><button type="submit">Book Now</button></router-link>
+                            
                         </form>
                     </div>
                 </div>

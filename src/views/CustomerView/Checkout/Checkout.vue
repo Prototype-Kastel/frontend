@@ -158,7 +158,7 @@
                         </div>
                     </div>
                     <div class="form-group mt-3 " style="">
-                        <a href="detailPesanan.html" class="btn btn-primary">Lanjut Ke Detail Pesanan</a>
+                         <router-link to="/customer/detailPesanan"> <a href="detailPesanan.html" class="btn btn-primary">Lanjut Ke Detail Pesanan</a></router-link>
                     </div>
                 </div>
             </div>

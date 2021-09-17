@@ -149,9 +149,7 @@
             </div>
           </div>
           <div class="form-group mt-3" style="">
-            <a href="dashboard.html" class="btn btn-primary"
-              >Lanjut Ke Pembayaran</a
-            >
+            <router-link to="/bookinguser"> <a href="#" class="btn btn-primary">Lanjut Ke Detail Pesanan</a></router-link>
           </div>
         </div>
       </div>

@@ -84,7 +84,8 @@
           </div>
         </div>
         <div class="col-12 col-sm">
-          <button type="submit">Check Availability</button>
+          <router-link to="/customer/roomSearch"><button type="submit">Check Availability</button></router-link>
+          
         </div>
       </div>
     </form>
@@ -140,7 +141,7 @@
           <h2><b>Rp 2.700.000</b></h2>
           <p>/room/night</p>
         </div>
-        <a href="room-details.html">Book Now</a>
+       <router-link to="/customer/roomDetails">Book Now</router-link>
       </div>
     </div>
     <br />
@@ -176,7 +177,8 @@
           <h2><b>Rp 2.200.000</b></h2>
           <p>/room/night</p>
         </div>
-        <a href="room-details.html">Book Now</a>
+         <router-link to="/customer/roomDetails">Book Now</router-link>
+        
       </div>
     </div>
   </div>
