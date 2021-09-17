@@ -74,7 +74,7 @@
                     </div>
                   </div>
                   <div class="dropdown-content">
-                      <button class="btn btn-primary btn-sm"><router-link to="/dashboarduser">Dashboard</router-link></button> 
+                      <router-link to="/dashboarduser"><a class="text-default">Dashboard</a></router-link>
                       <a class="user-logout" href="#">Logout</a>
                   </div>
                 </div>
